@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<!-- saved from url=(0168)https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_1_static_pages/4-instructional-labs-theia-static-pages.md.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./01.2.Add static pages_html_only_files/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./01.2.Add static pages_html_only_files/default.min.css">
+  <style type="text/css">/* this file is used for labs on cognitiveclass.ai that were written in markdown */
+
+/* applies to images, i.e. "![]()" in markdown */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* add padding and margins */
+body {
+  padding: 10px;
+  margin: 10px;
+}
+
+/* applies to tables, i.e. "|--|--|" in markdown */
+table td,
+table th {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+/* applies to using quotes, i.e. ">" in markdown */
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 1em 10px 0.1em 10px;
+  quotes: '\201C''\201D''\2018''\2019';
+}
+
+/* the headers need some spacing */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  padding-top: 20px;
+}
+
+/* Add padding between nested list item */
+ul > li > ul {
+  padding-bottom: 1rem;
+}
+
+.code-badge-language {
+  display: none;
+}
+.code-badge-copy-icon {
+  background: url('data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhciIgZGF0YS1pY29uPSJjb3B5IiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtY29weSBmYS13LTE0IiByb2xlPSJpbWciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDQ0OCA1MTIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTQzMy45NDEgNjUuOTQxbC01MS44ODItNTEuODgyQTQ4IDQ4IDAgMCAwIDM0OC4xMTggMEgxNzZjLTI2LjUxIDAtNDggMjEuNDktNDggNDh2NDhINDhjLTI2LjUxIDAtNDggMjEuNDktNDggNDh2MzIwYzAgMjYuNTEgMjEuNDkgNDggNDggNDhoMjI0YzI2LjUxIDAgNDgtMjEuNDkgNDgtNDh2LTQ4aDgwYzI2LjUxIDAgNDgtMjEuNDkgNDgtNDhWOTkuODgyYTQ4IDQ4IDAgMCAwLTE0LjA1OS0zMy45NDF6TTI2NiA0NjRINTRhNiA2IDAgMCAxLTYtNlYxNTBhNiA2IDAgMCAxIDYtNmg3NHYyMjRjMCAyNi41MSAyMS40OSA0OCA0OCA0OGg5NnY0MmE2IDYgMCAwIDEtNiA2em0xMjgtOTZIMTgyYTYgNiAwIDAgMS02LTZWNTRhNiA2IDAgMCAxIDYtNmgxMDZ2ODhjMCAxMy4yNTUgMTAuNzQ1IDI0IDI0IDI0aDg4djIwMmE2IDYgMCAwIDEtNiA2em02LTI1NmgtNjRWNDhoOS42MzJjMS41OTEgMCAzLjExNy42MzIgNC4yNDMgMS43NTdsNDguMzY4IDQ4LjM2OGE2IDYgMCAwIDEgMS43NTcgNC4yNDNWMTEyeiI+PC9wYXRoPjwvc3ZnPg==');
+  background-size: 100% 100%;
+}
+
+.code-badge {
+  bottom: 0 !important;
+  top: unset !important;
+  background: unset !important;
+}
+
+.code-badge > .code-badge-check-icon {
+  background: green;
+}
+.code-badge-check-icon {
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 0 7px;
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGFyaWEtaGlkZGVuPSJ0cnVlIiBmb2N1c2FibGU9ImZhbHNlIiBkYXRhLXByZWZpeD0iZmFzIiBkYXRhLWljb249ImNoZWNrIiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtY2hlY2sgZmEtdy0xNiIgcm9sZT0iaW1nIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9IiYjMTA7ICAgIGNvbG9yOiAjMmFmZjMyOyYjMTA7Ij48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik0xNzMuODk4IDQzOS40MDRsLTE2Ni40LTE2Ni40Yy05Ljk5Ny05Ljk5Ny05Ljk5Ny0yNi4yMDYgMC0zNi4yMDRsMzYuMjAzLTM2LjIwNGM5Ljk5Ny05Ljk5OCAyNi4yMDctOS45OTggMzYuMjA0IDBMMTkyIDMxMi42OSA0MzIuMDk1IDcyLjU5NmM5Ljk5Ny05Ljk5NyAyNi4yMDctOS45OTcgMzYuMjA0IDBsMzYuMjAzIDM2LjIwNGM5Ljk5NyA5Ljk5NyA5Ljk5NyAyNi4yMDYgMCAzNi4yMDRsLTI5NC40IDI5NC40MDFjLTkuOTk4IDkuOTk3LTI2LjIwNyA5Ljk5Ny0zNi4yMDQtLjAwMXoiLz48L3N2Zz4=');
+  background-size: 100% 100%;
+}
+</style><style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCxc4EsA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fChc4EsA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu72xKOzY.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7mxKOzY.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4WxKOzY.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7WxKOzY.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7GxKOzY.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCRc4EsA.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fABc4EsA.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCBc4EsA.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBxc4EsA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCxc4EsA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fChc4EsA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCRc4EsA.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfABc4EsA.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCBc4EsA.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBxc4EsA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCxc4EsA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfChc4EsA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style><style>.ucbzx-button-wrapper {
+    position: absolute !important;
+    z-index: 1000 !important;
+    top: 0 !important;
+    right: 0 !important;
+}
+
+.ucbzx-button {
+    display: block;
+    border: none !important;
+    /* outline: none !important; */
+    background: #3c3c54 !important;
+    padding: 0 !important;
+    border-radius: 5px;
+    width: 36px !important;
+    height: 36px !important;
+}
+
+.ucbzx-button:active {
+    border: none !important;
+}
+
+.ucbzx-button:disabled {
+    cursor: default !important;
+}
+
+.ucbzx-download-img {
+    display: block !important;
+    width: 36px !important;
+    height: 36px !important;
+    cursor: pointer !important;
+    margin: 0 !important;
+}
+
+.ucbzx-hide {
+    display: none !important;
+}
+
+.ucbzx-loader {
+    display: block;
+    box-sizing: content-box !important;
+    width: 30px !important;
+    height: 30px !important;
+    padding: 3px !important;
+    animation: rotate 1s linear infinite;
+    margin: 0 !important;
+}
+
+/*
+    RESOLUTIONS CHOICE
+*/
+
+.ucbzx-resolutions-list {
+    position: absolute !important;
+    top: 36px !important;
+    right: 0 !important;
+    background: #3c3c54 !important;
+    color: #dbdbdb !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 14px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.ucbzx-resolutions-list li {
+    margin: 4px !important;
+    padding: 0 !important;
+    font-weight: bold !important;
+    white-space: nowrap !important;
+    width: 130px !important;
+    height: 30px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.ucbzx-list-item-tickbox {
+    width: 20px !important;
+    height: 20px !important;
+    background: rgba(255, 255, 255, 0.219) !important;
+    /* border-radius: 5px !important; */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* font-size: 17px !important; */
+    /* border: 1px solid rgba(255, 255, 255, 0.835) !important; */
+    cursor: pointer !important;
+    margin-left: 4px !important;
+}
+
+.ucbzx-resolutions-list > li::before {
+    display: none;
+}
+
+.ucbzx-list-item-tickbox:not(.ucbzx-list-item-tickbox-checked):hover {
+    background: rgba(255, 255, 255, 0.37) !important;
+}
+
+.ucbzx-list-item-tickbox.ucbzx-list-item-tickbox-checked {
+    cursor: default !important;
+}
+
+.ucbzx-list-item-tickbox-checked::after {
+    content: "\2713" !important;
+    color: white !important;
+}
+
+.ucbzx-list-item-text {
+    /* border-radius: 5px !important; */
+    flex-grow: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    height: 100% !important;
+    margin-left: 10px !important;
+}
+
+.ucbzx-list-item-text:hover {
+    background: rgba(255, 255, 255, 0.37) !important;
+    color: white !important;
+}
+
+/* account for the fact that we got rid of the tickbox there */
+.ucbzx-resolutions-list li[data-type="captions"] .ucbzx-list-item-text {
+    margin-left: 34px !important;
+    font-style: italic;
+}
+
+/*
+    MISC
+*/
+
+.ucbzx-arrow-container {
+    background: none !important;
+    position: absolute !important;
+    top: 36px !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 18px solid transparent !important;
+    border-right: 18px solid transparent !important;
+    border-top: 18px solid #3c3c54 !important;
+    /* border-bottom: none !important; */
+    cursor: pointer !important;
+}
+
+.ucbzx-arrow-container::after {
+    position: absolute !important;
+    top: -18px !important;
+    left: -4px !important;
+    content: "" !important;
+    border: 1px solid #dbdbdb !important;
+    border-width: 0 3px 3px 0 !important;
+    display: inline-block !important;
+    padding: 3px !important;
+    transform: rotate(45deg);
+}
+
+.ucbzx-button:focus,
+.ucbzx-arrow-container:focus,
+.ucbzx-resolutions-list:focus,
+.ucbzx-list-item-tickbox:focus,
+.ucbzx-list-item-text:focus {
+    outline: 1px solid white !important;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*
+    RESET STYLES
+*/
+.ucbzx-button-wrapper button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    outline: none;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
+}
+
+.ucbzx-button-wrapper li,
+.ucbzx-button-wrapper li * {
+    margin: 0;
+    font: inherit;
+    font-style: inherit;
+    font-size: inherit;
+}</style></head>
+  <body>
+    <img src="./01.2.Add static pages_html_only_files/IDSNlogo-new.png" width="200">
+    <h1>Add static pages</h1>
+    <p><strong>Estimated time needed:</strong> 1 hour</p>
+    <p>Congratulations on your new role as the Lead Cloud Application Developer at <code>Best Cars</code> dealership.</p>
+    <p>
+      As part of the project, your first task is to run and test its main Django application.
+      You are given a skeleton Django application as a starting point. Then you need to complete the following steps to add additional static pages.
+    </p>
+    <details>
+      <summary>Click here for an important Note</summary>
+      <blockquote>
+        <p>Theia lab environment doesn't store you changes. If you are going to leave you workspace in between, it is highly recommended that you push any changes you make to git.</p>
+      </blockquote>
+      <pre class="code-badge-pre"><div class="code-badge">
+        <div class="code-badge-language">verilog</div>
+        <div title="Copy to clipboard">
+            <i class="code-badge-copy-icon code-badge-copy-icon"></i>
+        </div>
+     </div><code class="hljs language-verilog">git <span class="hljs-keyword">config</span> --<span class="hljs-keyword">global</span> user<span class="hljs-variable">.email</span> <span class="hljs-string">"yourgithub@email.com"</span>
+</code></pre>
+      <p></p>
+      <pre class="code-badge-pre"><div class="code-badge">
+        <div class="code-badge-language">verilog</div>
+        <div title="Copy to clipboard">
+            <i class="code-badge-copy-icon code-badge-copy-icon"></i>
+        </div>
+     </div><code class="hljs language-verilog">git <span class="hljs-keyword">config</span> --<span class="hljs-keyword">global</span> user<span class="hljs-variable">.name</span> <span class="hljs-string">"name"</span>
+</code></pre>
+      <p></p>
+      <pre class="code-badge-pre"><div class="code-badge">
+        <div class="code-badge-language">routeros</div>
+        <div title="Copy to clipboard">
+            <i class="code-badge-copy-icon code-badge-copy-icon"></i>
+        </div>
+     </div><code class="hljs language-routeros">git <span class="hljs-builtin-name">add</span> .
+</code></pre>
+      <p></p>
+      <pre class="code-badge-pre"><div class="code-badge">
+        <div class="code-badge-language">nginx</div>
+        <div title="Copy to clipboard">
+            <i class="code-badge-copy-icon code-badge-copy-icon"></i>
+        </div>
+     </div><code class="hljs language-nginx"><span class="hljs-attribute"><span class="hljs-attribute">git</span></span> commit -m<span class="hljs-string"><span class="hljs-string">"Adding temporary changes to Github"</span></span>
+</code></pre>
+      <p></p>
+      <pre class="code-badge-pre"><div class="code-badge">
+        <div class="code-badge-language">armasm</div>
+        <div title="Copy to clipboard">
+            <i class="code-badge-copy-icon code-badge-copy-icon"></i>
+        </div>
+     </div><code class="hljs language-armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">push</span>
+</code></pre>
+      <p></p>
+    </details>
+    <h1>Part - 1 : Clone the repository</h1>
+    <ol>
+      <li>Copy the git clone URL of the skeleton repository that you forked into your account.</li>
+    </ol>
+    <img src="./01.2.Add static pages_html_only_files/clone_copy_fullstack.png" width="100%" style="border: solid 1px grey">
+    <ol start="2">
+      <li>Open a new terminal.</li>
+    </ol>
+    <img src="./01.2.Add static pages_html_only_files/new-terminal.png" width="100%" style="border: solid 1px grey">
+    <ol start="3">
+      <li>
+        <p>Clone the URL you copied in step 1, in the local theia environment.</p>
+        <pre class="code-badge-pre"><div class="code-badge">
+        <div class="code-badge-language">crmsh</div>
+        <div title="Copy to clipboard">
+            <i class="code-badge-copy-icon code-badge-copy-icon"></i>
+        </div>
+     </div><code class="hljs language-crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">&lt;your_repo_name</span>&gt;
+</code></pre>
+      </li>
+    </ol>
+    <h1>Part - 2 Run the Django app on development server</h1>
+    <ol>
+      <li>Observe the folder structure of the Django app skeleton structure. You will see <code>server</code> folder with an app called <code>djangoapp</code>.</li>
+    </ol>
+    <p>Next, let's setup the Python runtime in Theia and test the app.</p>
+    <ol start="2">
+      <li>
+        <p>Change to the <code>server</code> directory.</p>
+        <pre class="code-badge-pre"><div class="code-badge">
+        <div class="code-badge-language">axapta</div>
+        <div title="Copy to clipboard">
+            <i class="code-badge-copy-icon code-badge-copy-icon"></i>
+        </div>
+     </div><code class="hljs language-axapta">cd agfzb-CloudAppDevelopment_Capstone/<span class="hljs-keyword">server</span>
+</code></pre>
+        <p></p>
+      </li>
+      <li>
+        <p>Install the necessary Python packages.</p>
+        <pre class="code-badge-pre"><div class="code-badge">
+        <div class="code-badge-language">basic</div>
+        <div title="Copy to clipboard">
+            <i class="code-badge-copy-icon code-badge-copy-icon"></i>
+        </div>
+     </div><code class="hljs language-basic">python3 -m pip install -U -r requi<span class="hljs-comment">rements.txt</span>
+
+</code></pre>
+        <p></p>
+      </li>
+      <li>
+        <p>Perform migrations to create necessary tables.</p>
+        <pre class="code-badge-pre"><div class="code-badge">
+        <div class="code-badge-language">vim</div>
+        <div title="Copy to clipboard">
+            <i class="code-badge-copy-icon code-badge-copy-icon"></i>
+        </div>
+     </div><code class="hljs language-vim"><span class="hljs-keyword">python3</span> manage.<span class="hljs-keyword">py</span> makemigrations
+</code></pre>
+        <p></p>
+      </li>
+      <li>
+        <p>Run migration to activate models for the app.</p>
+        <pre class="code-badge-pre"><div class="code-badge">
+        <div class="code-badge-language">vim</div>
+        <div title="Copy to clipboard">
+            <i class="code-badge-copy-icon code-badge-copy-icon"></i>
+        </div>
+     </div><code class="hljs language-vim"><span class="hljs-keyword">python3</span> manage.<span class="hljs-keyword">py</span> migrate
+</code></pre>
+        <p></p>
+      </li>
+      <li>
+        <p>Start the local development server.</p>
+        <pre class="code-badge-pre"><div class="code-badge">
+        <div class="code-badge-language">vim</div>
+        <div title="Copy to clipboard">
+            <i class="code-badge-copy-icon code-badge-copy-icon"></i>
+        </div>
+     </div><code class="hljs language-vim"><span class="hljs-keyword">python3</span> manage.<span class="hljs-keyword">py</span> runserver
+
+</code></pre>
+        <p></p>
+      </li>
+      <li>
+        <p>Click on the Skills Network button on the right, it will open the "Skills Network Toolbox". Then click <code>OTHER</code> then <code>Launch Application</code>. From there you should be able to enter the port as <code>8000</code> and launch the development server.</p>
+      </li>
+    </ol>
+    <img src="./01.2.Add static pages_html_only_files/Launch_Application.png" width="80%" style="border: solid 1px grey">
+    <ol start="8">
+      <li>
+        <p>When the browser tab opens, add the <strong>/djangoapp</strong> path. Your full URL should look like the following:</p>
+        <p><code>https://userid-8000.theiadocker-1.proxy.cognitiveclass.ai/djangoapp</code></p>
+        <blockquote>
+          <p><em>Note that <code>userid</code> in the URL is a placeholder. You will need to replace it with your actual Theia id.</em></p>
+        </blockquote>
+      </li>
+    </ol>
+    <p>Great! You should have the Django app running now. Next, you will add some static pages to your application.</p>
+    <h3>Take a screenshot for peer-review:</h3>
+    <p>
+      After your Django server is running successfully, please take a screenshot of the console/terminal output
+      and name it as <code>django_server.jpg</code> or <code>django_server.png</code> for peer-review.
+    </p>
+    <h1>3. Add static pages</h1>
+    <p>Let's begin by creating a Bootstrap navigation bar to the index page.</p>
+    <blockquote>
+      <p>More details about adding Bootstrap navigation bar can be found in this lab:<a href="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0251EN-SkillsNetwork/labs/m5_django_advanced/lab3_bootstrap.md.html" target="_blank" rel="external">Bootstrap Integration</a></p>
+    </blockquote>
+    <ol>
+      <li>
+        <p>Open <code>./server/djangoapp/templates/djangoapp/index.html</code> from the explorer. Add a navigation bar <code>&lt;nav&gt;</code> to the HTML template.</p>
+      </li>
+      <li>
+        <p>Create a static Django template under the <code>templates</code> folder.</p>
+      </li>
+      <li>
+        <p>Create a simple Django view with <code>render()</code> method to render the static Django template in views.py.</p>
+      </li>
+      <li>
+        <p>Configure the Django view route in <code>urls.py</code> under the folder <code>djangoapp</code>.</p>
+        <blockquote>
+          <p>More details about other ways of creating views and templates can be found in this <a href="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0251EN-SkillsNetwork/labs/m4_django_app/lab3_views_templates.md.html" target="_blank" rel="external">lab</a></p>
+        </blockquote>
+      </li>
+    </ol>
+    <h2>Add <code>About Us</code> page</h2>
+    <ol>
+      <li>
+        <p>Open <code>./server/djangoapp/templates/djangoapp/</code> folder and add an <code>about.html</code> for an <code>About Us</code> page.</p>
+      </li>
+      <li>
+        <p>Add the <code>About Us</code> page to the application. Users should be able to get to this page by visiting a URL such as <code>.../djangoapp/about</code>.</p>
+      </li>
+    </ol>
+    <p>The page should include the following paragraph. You may style the page as you wish.</p>
+    <pre class="code-badge-pre"><div class="code-badge">
+        <div class="code-badge-language">html</div>
+        <div title="Copy to clipboard">
+            <i class="code-badge-copy-icon code-badge-copy-icon"></i>
+        </div>
+     </div><code class="hljs language-html xml"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">html</span></span></span><span class="hljs-tag">&gt;</span></span>
+<span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">h1</span></span></span><span class="hljs-tag">&gt;</span></span>
+Welcome to Best Cars dealership, home to the best cars in North America. We sell domestic and imported cars at reasonable prices.
+<span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">h1</span></span></span><span class="hljs-tag">&gt;</span></span>
+<span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">html</span></span></span><span class="hljs-tag">&gt;</span></span>
+</code></pre>
+    <p></p>
+    <blockquote>
+      <p>You can add additional information that might be relevant to this page.</p>
+    </blockquote>
+    <p>Users should be able to access the About Us page from a home link in <code>&lt;nav&gt;</code>, a button, a menu link, or any other element you choose to use.</p>
+    <h3>Take a screenshot for peer-review:</h3>
+    <p>After you have created the <code>About Us</code> page, please take a screenshot and name it as <code>about_us.jpg</code> or <code>about_us.png</code> for peer-review.</p>
+    <h2>Add <code>Contact Us</code> page</h2>
+    <ol>
+      <li>
+        <p>Similarly, add the <code>Contact Us</code> page to the application. Users should able to get to this page by visiting a URL such as <code>.../djangoapp/contact</code>. The page should include the address and the telephone number of the company.</p>
+      </li>
+      <li>
+        <p>Users should be able to access the Contact Us page from a footer, a button, a menu link, or any other element you choose to use.</p>
+      </li>
+    </ol>
+    <h3>Take a screenshot for peer-review:</h3>
+    <p>After you have created the <code>Contact Us</code> page, please take a screenshot and name it as <code>contact_us.jpg</code> or <code>contact_us.png</code> for peer-review.</p>
+    <h2>Test the static pages</h2>
+    <ul>
+      <li>Test the static pages you have created in Cloud IDE by launching the application with the development server on port <code>8000</code> as done earlier.</li>
+    </ul>
+    <ol>
+      <li>Go to <code>https://userid-8000.theiadocker-1.proxy.cognitiveclass.ai/djangoapp/about</code> to test your About Us page.</li>
+      <li>Go to <code>https://userid-8000.theiadocker-1.proxy.cognitiveclass.ai/djangoapp/contact</code> to test your Contact Us page.</li>
+    </ol>
+    <h1>Submission</h1>
+    <p>Please note down the URLs of your GitHub repo and take screenshots of the static pages for peer-reviews.</p>
+    <h1>Summary</h1>
+    <p>
+      In this lab, you prepared your GitHub repository and cloned an app skeleton to start building the dealer review app.
+      As a warm-up task, you have created several static pages, tested the app.
+    </p>
+    <p>Now, you are ready to start some actual design and development work.</p>
+    <h2>Author(s)</h2>
+    <h4>Upkar Lidder</h4>
+    <h4></h4>
+    <h3>Other Contributor(s)</h3>
+    <p>
+      Yan Luo
+      Priya
+      Lavanya
+    </p>
+    <h2>Changelog</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Version</th>
+          <th>Changed by</th>
+          <th>Change Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2022-09-20</td>
+          <td>1.4</td>
+          <td>K Sundararajan</td>
+          <td>Updated pip (packages installation) command</td>
+        </tr>
+        <tr>
+          <td>2022-09-12</td>
+          <td>1.3</td>
+          <td>Lavanya Rajalingam</td>
+          <td>Updated instructions &amp; images</td>
+        </tr>
+        <tr>
+          <td>2022-09-01</td>
+          <td>1.2</td>
+          <td>K Sundararajan</td>
+          <td>Updated <code>Launch Application</code> instructions as per the new Theia IDE</td>
+        </tr>
+        <tr>
+          <td>2021-05-26</td>
+          <td>1.1</td>
+          <td>Lavanya</td>
+          <td>Made changes to the instructions and included images</td>
+        </tr>
+        <tr>
+          <td>2021-01-28</td>
+          <td>1.0</td>
+          <td>Upkar Lidder</td>
+          <td>Created new instructions for Capstone project</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2></h2>
+    <h3 align="center">© IBM Corporation 2021. All rights reserved.</h3>
+    <h3></h3>
+    <script>window.addEventListener('load', function() {
+snFaculty.inject();
+});</script>
+    <script src="./01.2.Add static pages_html_only_files/inject.43989f87.js.download"></script>
+    <script src="./01.2.Add static pages_html_only_files/highlight.min.js.download"></script>
+    <script src="./01.2.Add static pages_html_only_files/highlightjs-badge.min.js.download"></script>
+  
+
+<style>
+@media print {
+   .code-badge { display: none; }
+}
+    .code-badge-pre {
+        position: relative;
+    }
+    .code-badge {
+        display: flex;
+        flex-direction: row;
+        white-space: normal;
+        background: transparent;
+        background: #333;
+        color: white;
+        font-size: 0.875em;
+        opacity: 0.5;
+        transition: opacity linear 0.5s;
+        border-radius: 0 0 0 7px;
+        padding: 5px 8px 5px 8px;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .code-badge.active {
+        opacity: 0.8;
+    }
+
+    .code-badge:hover {
+        opacity: .95;
+    }
+
+    .code-badge a,
+    .code-badge a:hover {
+        text-decoration: none;
+    }
+
+    .code-badge-language {
+        margin-right: 10px;
+        font-weight: 600;
+        color: goldenrod;
+    }
+    .code-badge-copy-icon {
+        font-size: 1.2em;
+        cursor: pointer;
+        padding: 0 7px;
+        margin-top:2;
+    }
+    .fa.text-success:{ color: limegreen !important }
+</style><div id="CodeBadgeTemplate" style="display:none">
+    <div class="code-badge">
+        <div class="code-badge-language">{{language}}</div>
+        <div title="Copy to clipboard">
+            <i class="{{copyIconClass}} code-badge-copy-icon"></i>
+        </div>
+     </div>
+</div></body></html>

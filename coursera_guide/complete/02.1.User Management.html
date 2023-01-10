@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<!-- saved from url=(0456)https://author-ide.skills.network/render?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZF9pbnN0cnVjdGlvbnNfdXJsIjoiaHR0cHM6Ly9jZi1jb3Vyc2VzLWRhdGEuczMudXMuY2xvdWQtb2JqZWN0LXN0b3JhZ2UuYXBwZG9tYWluLmNsb3VkL0lCTS1DRDAzMjFFTi1Ta2lsbHNOZXR3b3JrL2xhYnMvbW9kdWxlXzJfdXNlcl9tYW5hZ2VtZW50LzEtaW5zdHJ1Y3Rpb25hbC1sYWJzLXRoZWlhLXVzZXItbWFuYWdlbWVudC5tZCIsInRvb2xfdHlwZSI6InRoZWlhIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE2NzE3OTA4Mzh9.QokYTt1hGtjyRVBSfJor3efIjqZEoNL_NgR7dh4vyXk -->
+<html lang="en" style="overflow: hidden;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="Editor.md,editor,Markdown Editor,Markdown">
+    <meta name="description" content="Skills Network Author IDE">
+    <title>Skills Network Editor</title>
+    <link rel="stylesheet" href="./02.1.User Management_files/style.css">
+    <link rel="stylesheet" href="./02.1.User Management_files/editormd.css">
+    <link rel="stylesheet" href="./02.1.User Management_files/custom.css">
+    <link rel="shortcut icon" href="https://author-ide.skills.network/public/images/SN_favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./02.1.User Management_files/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="./02.1.User Management_files/comms.js.download"></script>
+    <script src="./02.1.User Management_files/alpinejs"></script>
+<script id="editormd-lib-xss" type="text/javascript" src="./02.1.User Management_files/xss.js.download"></script><link type="text/css" rel="stylesheet" href="./02.1.User Management_files/codemirror.min.css"><link type="text/css" rel="stylesheet" href="./02.1.User Management_files/foldgutter.css"><script id="editormd-lib-codemirror-codemirror-min" type="text/javascript" src="./02.1.User Management_files/codemirror.min.js.download"></script><script id="editormd-lib-codemirror-modes-min" type="text/javascript" src="./02.1.User Management_files/modes.min.js.download"></script><script id="editormd-lib-codemirror-addons-min" type="text/javascript" src="./02.1.User Management_files/addons.min.js.download"></script><style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCxc4EsA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fChc4EsA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu72xKOzY.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7mxKOzY.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4WxKOzY.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7WxKOzY.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7GxKOzY.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCRc4EsA.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fABc4EsA.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCBc4EsA.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBxc4EsA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCxc4EsA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fChc4EsA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCRc4EsA.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfABc4EsA.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCBc4EsA.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBxc4EsA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCxc4EsA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfChc4EsA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style><style>.ucbzx-button-wrapper {
+    position: absolute !important;
+    z-index: 1000 !important;
+    top: 0 !important;
+    right: 0 !important;
+}
+
+.ucbzx-button {
+    display: block;
+    border: none !important;
+    /* outline: none !important; */
+    background: #3c3c54 !important;
+    padding: 0 !important;
+    border-radius: 5px;
+    width: 36px !important;
+    height: 36px !important;
+}
+
+.ucbzx-button:active {
+    border: none !important;
+}
+
+.ucbzx-button:disabled {
+    cursor: default !important;
+}
+
+.ucbzx-download-img {
+    display: block !important;
+    width: 36px !important;
+    height: 36px !important;
+    cursor: pointer !important;
+    margin: 0 !important;
+}
+
+.ucbzx-hide {
+    display: none !important;
+}
+
+.ucbzx-loader {
+    display: block;
+    box-sizing: content-box !important;
+    width: 30px !important;
+    height: 30px !important;
+    padding: 3px !important;
+    animation: rotate 1s linear infinite;
+    margin: 0 !important;
+}
+
+/*
+    RESOLUTIONS CHOICE
+*/
+
+.ucbzx-resolutions-list {
+    position: absolute !important;
+    top: 36px !important;
+    right: 0 !important;
+    background: #3c3c54 !important;
+    color: #dbdbdb !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 14px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.ucbzx-resolutions-list li {
+    margin: 4px !important;
+    padding: 0 !important;
+    font-weight: bold !important;
+    white-space: nowrap !important;
+    width: 130px !important;
+    height: 30px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.ucbzx-list-item-tickbox {
+    width: 20px !important;
+    height: 20px !important;
+    background: rgba(255, 255, 255, 0.219) !important;
+    /* border-radius: 5px !important; */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* font-size: 17px !important; */
+    /* border: 1px solid rgba(255, 255, 255, 0.835) !important; */
+    cursor: pointer !important;
+    margin-left: 4px !important;
+}
+
+.ucbzx-resolutions-list > li::before {
+    display: none;
+}
+
+.ucbzx-list-item-tickbox:not(.ucbzx-list-item-tickbox-checked):hover {
+    background: rgba(255, 255, 255, 0.37) !important;
+}
+
+.ucbzx-list-item-tickbox.ucbzx-list-item-tickbox-checked {
+    cursor: default !important;
+}
+
+.ucbzx-list-item-tickbox-checked::after {
+    content: "\2713" !important;
+    color: white !important;
+}
+
+.ucbzx-list-item-text {
+    /* border-radius: 5px !important; */
+    flex-grow: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    height: 100% !important;
+    margin-left: 10px !important;
+}
+
+.ucbzx-list-item-text:hover {
+    background: rgba(255, 255, 255, 0.37) !important;
+    color: white !important;
+}
+
+/* account for the fact that we got rid of the tickbox there */
+.ucbzx-resolutions-list li[data-type="captions"] .ucbzx-list-item-text {
+    margin-left: 34px !important;
+    font-style: italic;
+}
+
+/*
+    MISC
+*/
+
+.ucbzx-arrow-container {
+    background: none !important;
+    position: absolute !important;
+    top: 36px !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 18px solid transparent !important;
+    border-right: 18px solid transparent !important;
+    border-top: 18px solid #3c3c54 !important;
+    /* border-bottom: none !important; */
+    cursor: pointer !important;
+}
+
+.ucbzx-arrow-container::after {
+    position: absolute !important;
+    top: -18px !important;
+    left: -4px !important;
+    content: "" !important;
+    border: 1px solid #dbdbdb !important;
+    border-width: 0 3px 3px 0 !important;
+    display: inline-block !important;
+    padding: 3px !important;
+    transform: rotate(45deg);
+}
+
+.ucbzx-button:focus,
+.ucbzx-arrow-container:focus,
+.ucbzx-resolutions-list:focus,
+.ucbzx-list-item-tickbox:focus,
+.ucbzx-list-item-text:focus {
+    outline: 1px solid white !important;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*
+    RESET STYLES
+*/
+.ucbzx-button-wrapper button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    outline: none;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
+}
+
+.ucbzx-button-wrapper li,
+.ucbzx-button-wrapper li * {
+    margin: 0;
+    font: inherit;
+    font-style: inherit;
+    font-size: inherit;
+}</style><link type="text/css" rel="stylesheet" href="./02.1.User Management_files/pastel-on-dark.css"><script id="editormd-lib-marked-min" type="text/javascript" src="./02.1.User Management_files/marked.min.js.download"></script><script id="editormd-lib-prettify-min" type="text/javascript" src="./02.1.User Management_files/prettify.min.js.download"></script><script id="editormd-lib-raphael-min" type="text/javascript" src="./02.1.User Management_files/raphael.min.js.download"></script><script id="editormd-lib-underscore-min" type="text/javascript" src="./02.1.User Management_files/underscore.min.js.download"></script><script id="editormd-lib-flowchart-min" type="text/javascript" src="./02.1.User Management_files/flowchart.min.js.download"></script><script id="editormd-lib-jquery-flowchart-min" type="text/javascript" src="./02.1.User Management_files/jquery.flowchart.min.js.download"></script><script id="editormd-lib-sequence-diagram-min" type="text/javascript" src="./02.1.User Management_files/sequence-diagram.min.js.download"></script><link type="text/css" rel="stylesheet" href="./02.1.User Management_files/katex.min.css"><script id="https:-cdnjs-cloudflare-com-ajax-libs-KaTeX-0-15-6-katex-min" type="text/javascript" src="./02.1.User Management_files/katex.min.js.download"></script></head>
+
+<body style="overflow: hidden;">
+    <div id="layout">
+    <div id="test-editormd" class="editormd editormd-vertical editormd-theme-dark editormd-fullscreen" style="width: 1280px; height: 601px;">
+        <textarea style="display:none;" class="editormd-markdown-textarea" placeholder="Enjoy Markdown! coding now..." name="test-editormd-markdown-doc">::page{title="User Management"}
+
+&lt;img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"&gt;
+
+##
+
+**Estimated time needed:** 1 hour and 20 mins
+
+The admins of your app will need to manage users and user access based on users' types, such as, 
+visitors and registered users. Your task is to add a standard user management feature to your app. 
+
+::page{title="Environment setup"}
+
+If your Theia workspace has been reset and you want to continue from where you left off previously, you can
+`git clone` or pull the latest code from your GitHub repository. 
+
+- Set up the Python runtime again if Theia workspace has been reset.
+
+```
+python3 -m pip install -U -r requirements.txt
+```
+
+Note: You may need to perform migrations for a new Theia environment.
+
+::page{title="Create a superuser for your app"}
+
+Let's create a superuser first.
+
+- Stop the server, if started. `cd` to `/server` folder and run:
+ 
+
+```
+python3 manage.py createsuperuser
+
+```
+
+With `Username`, `Email`, `Password` entered, you should see a message indicating that the superuser has been created:
+
+```
+Superuser created successfully.
+
+```
+
+Start the server again and log in to the Admin site as the superuser.
+
+```
+python3 manage.py runserver
+```
+
+- Click on the Skills Network button on the right, it will open the "Skills Network Toolbox". Then click `OTHER`, then `Launch Application`. From there you should be able to enter the port as `8000` and launch the development server.
+
+&lt;img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_2_user_management/images/Launch_Application.png" width="80%" style="border: solid 1px grey"&gt;
+
+After the browser tab opens, add the `/admin` path. Your full URL should look like the following:
+
+`https://userid-8000.theiadocker-1.proxy.cognitiveclass.ai/admin`
+
+- Log in to the admin site with the credentials you just created for the superuser.
+
+- Click `Users` under the `AUTHENTICATION AND AUTHORIZATION` section. You should be able to view the superuser
+you just created.
+
+::page{title="Add user login/logout and signup menu items"}
+
+First, let's add login/logout and signup menu items to the navigation bar `&lt;nav&gt;` created in 
+the previous lab.
+
+- Open `./templates/djangoapp/index.html` and find the created navigation bar `&lt;nav&gt;` to the html template.
+
+ 
+
+#### Add the following menu items to `&lt;nav&gt;`: 
+
+&lt;br&gt;
+ - A form with one text input to accept user name and one password text input to accept password. &lt;br&gt;
+ - A login submission button/link pointing to a Django login view, to be created later. &lt;br&gt;
+ - A signup link/button pointing to a Django signup view, to be created later. 
+&lt;br&gt; 
+
+The created `&lt;nav&gt;` bar for login and signup may look like the following screenshot: &lt;br&gt;
+
+&lt;img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_2_user_management/images/1-user-management-login.png"&gt;
+
+&lt;br&gt; &lt;br&gt;
+
+#### Add the following navigation bar items after user has been authenticated:
+
+&lt;br&gt;
+ - A text label to display user's first name or username. &lt;br&gt;
+ - A signout submission button/link pointing to a signout view, to be created later.
+&lt;br&gt;
+
+The `&lt;nav&gt;` bar for an authenticated user may look like the following screenshot: &lt;br&gt;
+
+&lt;img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_2_user_management/images/2-user-management-logout.png"&gt;
+
+&lt;br&gt; &lt;br&gt;
+
+More details about adding Bootstrap navigation bar with login/logout and signup menu items could be found in this lab:
+
+&lt;a href="https://cocl.us/qwjF4" target="_blank"&gt;Bootstrap Integration&lt;/a&gt;
+
+::page{title="Add a new login view"}
+
+Next, you need to create a new login Django view to handle a login request.
+
+- Open `djangoapp/views.py` and add a new login view to authenticate user.
+
+- Configure a route for the login view by adding a path entry in `djangoapp/urls.py`.
+
+You may refer to this lab to get more details about Django authentication:
+
+&lt;a href="https://cocl.us/jHlDe" target="_blank"&gt;Django Authentication System&lt;/a&gt;
+
+### Take a screenshot for peer-review: 
+
+After you have created the login view, please take a screenshot and name it as `login.jpg` or `login.png` for peer-review.
+
+::page{title="Add a new logout view"}
+
+After the user can login, you need to create a new logout Django view to handle the logout request.
+
+- Open `djangoapp/views.py` and add a new logout view to handle a logout request.
+
+- Configure a route for the logout view by adding a path entry in `djangoapp/urls.py`.
+
+You may refer to this lab to get more details about Django authentication:
+
+&lt;a href="https://cocl.us/jHlDe" target="_blank"&gt;Django Authentication System&lt;/a&gt;
+
+### Take a screenshot for peer-review: 
+
+After you have created the logout view, please take a screenshot and name it as `logout.jpg` or `logout.png` for peer-review.
+
+::page{title="Add a sign-up template"}
+
+At this point, you should be able to log in and log out with the superuser you created earlier. 
+
+Next, you will create a signup or registration page to create new regular users.
+
+- Open `./templates/djangoapp/registration.html` and add a registration form with: &lt;br&gt;
+
+  - A text input to receive first name.
+  - A text input to receive last name.
+  - A text input to receive username.
+  - A password text input to receive password.
+  - A submission button pointing to a signup view, to be created later.
+
+  
+
+The new signup page may look like the following screenshot: &lt;br&gt;
+
+&lt;img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_2_user_management/images/3-user-management-signup.png" width="600"&gt;
+  
+
+::page{title="Add a new sign-up view"}
+
+You also need to create a new signup Django view in order to register(create) a new user and then log in the user.
+
+- Open `djangoapp/views.py`, add a new sign-up view.
+
+- Configure a route for the signup view by adding a path entry in `djangoapp/urls.py`.
+
+You may refer to this lab to get more details about Django authentication:
+
+&lt;a href="https://cocl.us/jHlDe" target="_blank"&gt;Django Authentication System&lt;/a&gt;
+
+### Take a screenshot for peer-review: 
+
+After you have created the sign-up view, please take a screenshot and name it 
+as `sign-up.jpg` or `sign-up.png` for peer-review.
+
+::page{title="Test the updated app"}
+
+Now you may want to test the updated Django app with signup, login, and logout end-to-end.
+
+::page{title="Submission"}
+
+Commit and push the changes to your GitHub repository.
+
+If you need to refresh your memory on how to commit and push to GitHub in Theia lab environment, please refer to this lab [Working with git in the Theia lab environment](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-CD0101EN-SkillsNetwork/labs/GitHubLabs/Github_commit.md.html)
+
+::page{title="Summary"}
+
+In this lab, you have added user management related templates and views to the app.
+In the next lab, you will start to create car/make related models, templates, and views.
+
+## Author(s)
+
+&lt;h4&gt; Yan Luo &lt;h4/&gt;
+
+### Other Contributor(s) 
+
+Upkar Lidder
+
+## Changelog
+
+| Date | Version | Changed by | Change Description |
+|------|--------|--------|---------|
+| 2022-09-20 | 1.3 | K Sundararajan | Updated pip (packages installation) command |
+| 2022-09-14 | 1.2 | K Sundararajan | Updated instructions |
+| 2022-09-01 | 1.1 | K Sundararajan | Updated `Launch Application` instructions as per the new Theia IDE |
+| 2021-01-28 | 1.0 | Yan Luo | Created new instructions for Capstone project |
+
+## &lt;h3 align="center"&gt; © IBM Corporation 2021. All rights reserved. &lt;h3/&gt;
+
+</textarea><div class="CodeMirror cm-s-pastel-on-dark CodeMirror-wrap" translate="no" style="font-size: 13px; width: 1281px; height: 601px; margin-top: 0px; display: none;"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 64px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" disabled="" readonly="" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; min-height: 1em; outline: none;"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true" style="bottom: 0px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 52px; margin-bottom: -7px; border-right-width: 43px; min-height: 4802px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>207</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 12px; top: 0px; height: 22.3958px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -52px; width: 52px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">::page{title="User Management"}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">src</span>=<span class="cm-string">"</span><span class="cm-string cm-link">https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/images/IDSN-logo.png</span><span class="cm-string">"</span> <span class="cm-attribute">width</span>=<span class="cm-string">"200"</span> <span class="cm-attribute">alt</span>=<span class="cm-string">"cognitiveclass.ai logo"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-header cm-header-2">##</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-strong">**Estimated time needed:**</span> 1 hour and 20 mins</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The admins of your app will need to manage users and user access based on users' types, such as,<span class="cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">visitors and registered users. Your task is to add a standard user management feature to your app.<span class="cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">::page{title="Environment setup"}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">If your Theia workspace has been reset and you want to continue from where you left off previously, you can</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">`git clone`</span> or pull the latest code from your GitHub repository.<span class="cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">17</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">- Set up the Python runtime again if Theia workspace has been reset.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">18</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">19</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">```</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">20</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">python3 -m pip install -U -r requirements.txt</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">21</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">```</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">22</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">23</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Note: You may need to perform migrations for a new Theia environment.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">24</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">25</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">::page{title="Create a superuser for your app"}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">26</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">27</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Let's create a superuser first.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">28</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">29</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">- Stop the server, if started. </span><span class="cm-comment cm-variable-2">`cd`</span><span class="cm-variable-2"> to </span><span class="cm-comment cm-variable-2">`/server`</span><span class="cm-variable-2"> folder and run:</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">30</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">31</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">32</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">```</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">33</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">python3 manage.py createsuperuser</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">34</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">35</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">```</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">36</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">37</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">With <span class="cm-comment">`Username`</span>, <span class="cm-comment">`Email`</span>, <span class="cm-comment">`Password`</span> entered, you should see a message indicating that the superuser has been created:</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">38</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">39</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">```</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">40</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">Superuser created successfully.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">41</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">42</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">```</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">43</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">44</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Start the server again and log in to the Admin site as the superuser.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">45</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">46</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">```</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">47</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">python3 manage.py runserver</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">48</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">```</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">49</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">50</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">- Click on the Skills Network button on the right, it will open the "Skills Network Toolbox". Then click </span><span class="cm-comment cm-variable-2">`OTHER`</span><span class="cm-variable-2">, then </span><span class="cm-comment cm-variable-2">`Launch Application`</span><span class="cm-variable-2">. From there you should be able to enter the port as </span><span class="cm-comment cm-variable-2">`8000`</span><span class="cm-variable-2"> and launch the development server.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">51</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">52</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">src</span>=<span class="cm-string">"</span><span class="cm-string cm-link">https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_2_user_management/images/Launch_Application.png</span><span class="cm-string">"</span> <span class="cm-attribute">width</span>=<span class="cm-string">"80%"</span> <span class="cm-attribute">style</span>=<span class="cm-string">"border: solid 1px grey"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">53</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">54</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">After the browser tab opens, add the <span class="cm-comment">`/admin`</span> path. Your full URL should look like the following:</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">55</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">56</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">`https://userid-8000.theiadocker-1.proxy.cognitiveclass.ai/admin`</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">57</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">58</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">- Log in to the admin site with the credentials you just created for the superuser.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">59</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">60</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">- Click </span><span class="cm-comment cm-variable-2">`Users`</span><span class="cm-variable-2"> under the </span><span class="cm-comment cm-variable-2">`AUTHENTICATION AND AUTHORIZATION`</span><span class="cm-variable-2"> section. You should be able to view the superuser</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">61</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">you just created.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">62</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">63</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">::page{title="Add user login/logout and signup menu items"}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">64</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">65</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">First, let's add login/logout and signup menu items to the navigation bar <span class="cm-comment">`&lt;nav&gt;`</span> created in<span class="cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">66</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">the previous lab.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">67</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">68</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">- Open </span><span class="cm-comment cm-variable-2">`./templates/djangoapp/index.html`</span><span class="cm-variable-2"> and find the created navigation bar </span><span class="cm-comment cm-variable-2">`&lt;nav&gt;`</span><span class="cm-variable-2"> to the html template.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">69</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">70</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">71</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">72</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-header cm-header-4">#### Add the following menu items to </span><span class="cm-comment cm-header cm-header-4">`&lt;nav&gt;`</span><span class="cm-header cm-header-4">:</span><span class="cm-header cm-header-4 cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">73</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">74</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">br</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">75</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-variable-2">- A form with one text input to accept user name and one password text input to accept password. </span><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">br</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">76</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-variable-2">- A login submission button/link pointing to a Django login view, to be created later. </span><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">br</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">77</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-variable-2">- A signup link/button pointing to a Django signup view, to be created later.</span><span class="cm-variable-2 cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">78</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">br</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">79</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">80</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The created <span class="cm-comment">`&lt;nav&gt;`</span> bar for login and signup may look like the following screenshot: <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">br</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">81</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">82</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">src</span>=<span class="cm-string">"</span><span class="cm-string cm-link">https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_2_user_management/images/1-user-management-login.png</span><span class="cm-string">"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">83</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">84</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">br</span><span class="cm-tag cm-bracket">&gt;</span> <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">br</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">85</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">86</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-header cm-header-4">#### Add the following navigation bar items after user has been authenticated:</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">87</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">88</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">br</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">89</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-variable-2">- A text label to display user's first name or username. </span><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">br</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">90</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-variable-2">- A signout submission button/link pointing to a signout view, to be created later.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">91</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">br</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">92</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">93</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The <span class="cm-comment">`&lt;nav&gt;`</span> bar for an authenticated user may look like the following screenshot: <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">br</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">94</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">95</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">src</span>=<span class="cm-string">"</span><span class="cm-string cm-link">https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_2_user_management/images/2-user-management-logout.png</span><span class="cm-string">"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">96</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">97</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">br</span><span class="cm-tag cm-bracket">&gt;</span> <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">br</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">98</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">99</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">More details about adding Bootstrap navigation bar with login/logout and signup menu items could be found in this lab:</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">100</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">101</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">href</span>=<span class="cm-string">"</span><span class="cm-string cm-link">https://cocl.us/qwjF4</span><span class="cm-string">"</span> <span class="cm-attribute">target</span>=<span class="cm-string">"_blank"</span><span class="cm-tag cm-bracket">&gt;</span>Bootstrap Integration<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">102</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">103</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">::page{title="Add a new login view"}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">104</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">105</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Next, you need to create a new login Django view to handle a login request.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">106</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">107</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">- Open </span><span class="cm-comment cm-variable-2">`djangoapp/views.py`</span><span class="cm-variable-2"> and add a new login view to authenticate user.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">108</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">109</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">- Configure a route for the login view by adding a path entry in </span><span class="cm-comment cm-variable-2">`djangoapp/urls.py`</span><span class="cm-variable-2">.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">110</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">111</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">You may refer to this lab to get more details about Django authentication:</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">112</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">113</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">href</span>=<span class="cm-string">"</span><span class="cm-string cm-link">https://cocl.us/jHlDe</span><span class="cm-string">"</span> <span class="cm-attribute">target</span>=<span class="cm-string">"_blank"</span><span class="cm-tag cm-bracket">&gt;</span>Django Authentication System<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">114</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">115</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-header cm-header-3">### Take a screenshot for peer-review:</span><span class="cm-header cm-header-3 cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">116</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">117</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">After you have created the login view, please take a screenshot and name it as <span class="cm-comment">`login.jpg`</span> or <span class="cm-comment">`login.png`</span> for peer-review.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">118</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">119</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">::page{title="Add a new logout view"}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">120</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">121</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">After the user can login, you need to create a new logout Django view to handle the logout request.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">122</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">123</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">- Open </span><span class="cm-comment cm-variable-2">`djangoapp/views.py`</span><span class="cm-variable-2"> and add a new logout view to handle a logout request.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">124</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">125</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">- Configure a route for the logout view by adding a path entry in </span><span class="cm-comment cm-variable-2">`djangoapp/urls.py`</span><span class="cm-variable-2">.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">126</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">127</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">You may refer to this lab to get more details about Django authentication:</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">128</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">129</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">href</span>=<span class="cm-string">"</span><span class="cm-string cm-link">https://cocl.us/jHlDe</span><span class="cm-string">"</span> <span class="cm-attribute">target</span>=<span class="cm-string">"_blank"</span><span class="cm-tag cm-bracket">&gt;</span>Django Authentication System<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">130</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">131</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-header cm-header-3">### Take a screenshot for peer-review:</span><span class="cm-header cm-header-3 cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">132</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">133</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">After you have created the logout view, please take a screenshot and name it as <span class="cm-comment">`logout.jpg`</span> or <span class="cm-comment">`logout.png`</span> for peer-review.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">134</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">135</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">::page{title="Add a sign-up template"}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">136</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">137</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">At this point, you should be able to log in and log out with the superuser you created earlier.<span class="cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">138</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">139</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Next, you will create a signup or registration page to create new regular users.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">140</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">141</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">- Open </span><span class="cm-comment cm-variable-2">`./templates/djangoapp/registration.html`</span><span class="cm-variable-2"> and add a registration form with: </span><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">br</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">142</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">143</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable-3">- A text input to receive first name.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">144</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable-3">- A text input to receive last name.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">145</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable-3">- A text input to receive username.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">146</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable-3">- A password text input to receive password.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">147</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable-3">- A submission button pointing to a signup view, to be created later.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">148</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">149</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-overlay cm-trailingspace"> &nbsp;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">150</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">151</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The new signup page may look like the following screenshot: <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">br</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">152</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">153</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">src</span>=<span class="cm-string">"</span><span class="cm-string cm-link">https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_2_user_management/images/3-user-management-signup.png</span><span class="cm-string">"</span> <span class="cm-attribute">width</span>=<span class="cm-string">"600"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">154</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-overlay cm-trailingspace"> &nbsp;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">155</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">156</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">::page{title="Add a new sign-up view"}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">157</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">158</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">You also need to create a new signup Django view in order to register(create) a new user and then log in the user.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">159</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">160</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">- Open </span><span class="cm-comment cm-variable-2">`djangoapp/views.py`</span><span class="cm-variable-2">, add a new sign-up view.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">161</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">162</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">- Configure a route for the signup view by adding a path entry in </span><span class="cm-comment cm-variable-2">`djangoapp/urls.py`</span><span class="cm-variable-2">.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">163</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">164</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">You may refer to this lab to get more details about Django authentication:</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">165</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">166</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">href</span>=<span class="cm-string">"</span><span class="cm-string cm-link">https://cocl.us/jHlDe</span><span class="cm-string">"</span> <span class="cm-attribute">target</span>=<span class="cm-string">"_blank"</span><span class="cm-tag cm-bracket">&gt;</span>Django Authentication System<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">167</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">168</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-header cm-header-3">### Take a screenshot for peer-review:</span><span class="cm-header cm-header-3 cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">169</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">170</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">After you have created the sign-up view, please take a screenshot and name it<span class="cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">171</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">as <span class="cm-comment">`sign-up.jpg`</span> or <span class="cm-comment">`sign-up.png`</span> for peer-review.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">172</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">173</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">::page{title="Test the updated app"}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">174</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">175</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Now you may want to test the updated Django app with signup, login, and logout end-to-end.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">176</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">177</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">::page{title="Submission"}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">178</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">179</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Commit and push the changes to your GitHub repository.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">180</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">181</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">If you need to refresh your memory on how to commit and push to GitHub in Theia lab environment, please refer to this lab <span class="cm-link">[Working with git in the Theia lab environment]</span><span class="cm-string cm-url">(https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-CD0101EN-SkillsNetwork/labs/GitHubLabs/Github_commit.md.html)</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">182</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">183</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">::page{title="Summary"}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">184</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">185</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">In this lab, you have added user management related templates and views to the app.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">186</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">In the next lab, you will start to create car/make related models, templates, and views.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">187</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">188</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-header cm-header-2">## Author(s)</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">189</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">190</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h4</span><span class="cm-tag cm-bracket">&gt;</span> Yan Luo <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h4</span><span class="cm-tag cm-bracket">/&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">191</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">192</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">### Other Contributor(s)<span class="cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">193</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">194</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Upkar Lidder</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">195</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">196</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">## Changelog</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">197</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">198</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| Date | Version | Changed by | Change Description |</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">199</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|------|--------|--------|---------|</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">200</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| 2022-09-20 | 1.3 | K Sundararajan | Updated pip (packages installation) command |</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">201</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| 2022-09-14 | 1.2 | K Sundararajan | Updated instructions |</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">202</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| 2022-09-01 | 1.1 | K Sundararajan | Updated `Launch Application` instructions as per the new Theia IDE |</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">203</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| 2021-01-28 | 1.0 | Yan Luo | Created new instructions for Capstone project |</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">204</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">205</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">## <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h3</span> <span class="cm-attribute">align</span>=<span class="cm-string">"center"</span><span class="cm-tag cm-bracket">&gt;</span> © IBM Corporation 2021. All rights reserved. <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h3</span><span class="cm-tag cm-bracket">/&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">206</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -52px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">207</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 43px; width: 1px; border-bottom: 0px solid transparent; top: 4802px;"></div><div class="CodeMirror-gutters" style="height: 4845px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 32px;"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div>
+    
+
+<div class="editormd-preview editormd-preview-theme-dark" style="background: rgb(255, 255, 255); top: 0px; width: 1280px; height: 601px;"><div class="md-header" style="z-index:1;"><div class="toolbar"><button class="toc" style=""><i class="fa fa-bars" aria-hidden="true" style="margin-right: 15px; display: inline;"></i><p>Table of Contents</p></button><div class="tools">         <button class="tool-icon" id="print" title="Print instructions"><i class="fa fa-print" aria-hidden="true"></i></button>         <button class="tool-icon" id="font-up" title="Increase font size"><i class="fa fa-font" aria-hidden="true"></i><sup>+</sup></button>         <button class="tool-icon" id="font-down" title="Decrease font size"><i class="fa fa-font" aria-hidden="true"></i><sup>-</sup></button>     </div></div>         <nav class="instruction-progress-bar" aria-label="pagination">             <div class="instruction-progress-fill" style="width: 114.542px;"></div>             <ul class="pagination"><li class="page-item active"></li><li class="page-divider" style="background-color: rgb(34, 34, 34);"></li><li class="page-item"></li><li class="page-divider" style="background-color: rgb(34, 34, 34);"></li><li class="page-item"></li><li class="page-divider" style="background-color: rgb(34, 34, 34);"></li><li class="page-item"></li><li class="page-divider" style="background-color: rgb(34, 34, 34);"></li><li class="page-item"></li><li class="page-divider" style="background-color: rgb(34, 34, 34);"></li><li class="page-item"></li><li class="page-divider" style="background-color: rgb(34, 34, 34);"></li><li class="page-item"></li><li class="page-divider" style="background-color: rgb(34, 34, 34);"></li><li class="page-item"></li><li class="page-divider" style="background-color: rgb(34, 34, 34);"></li><li class="page-item"></li><li class="page-divider" style="background-color: rgb(34, 34, 34);"></li><li class="page-item"></li><li class="page-divider" style="background-color: rgb(34, 34, 34);"></li><li class="page-item"></li><li class="page-divider" style="background-color: rgb(34, 34, 34);"></li></ul>         </nav></div><div class="table-of-contents"><button class="chapter active"><span class="chapter-num">1</span><span class="chapter-title">User Management</span></button><button class="chapter"><span class="chapter-num">2</span><span class="chapter-title">Environment setup</span></button><button class="chapter"><span class="chapter-num">3</span><span class="chapter-title">Create a superuser for your app</span></button><button class="chapter"><span class="chapter-num">4</span><span class="chapter-title">Add user login/logout and signup menu items</span></button><button class="chapter"><span class="chapter-num">5</span><span class="chapter-title">Add a new login view</span></button><button class="chapter"><span class="chapter-num">6</span><span class="chapter-title">Add a new logout view</span></button><button class="chapter"><span class="chapter-num">7</span><span class="chapter-title">Add a sign-up template</span></button><button class="chapter"><span class="chapter-num">8</span><span class="chapter-title">Add a new sign-up view</span></button><button class="chapter"><span class="chapter-num">9</span><span class="chapter-title">Test the updated app</span></button><button class="chapter"><span class="chapter-num">10</span><span class="chapter-title">Submission</span></button><button class="chapter"><span class="chapter-num">11</span><span class="chapter-title">Summary</span></button></div><div class="sticky-header" style="z-index: 1; padding-top: 0px; padding-bottom: 0px; height: auto;"></div><div class="markdown-body editormd-preview-container editormd-preview-active" previewcontainer="true" style="height: 100%;"><div class="pages"><div class="page" id="page-1"><h1 class="pageTitle">User Management</h1>
+<img src="./02.1.User Management_files/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo">
+
+<h2><span class="header-link octicon octicon-link"></span></h2><p><strong>Estimated time needed:</strong> 1 hour and 20 mins</p>
+<p>The admins of your app will need to manage users and user access based on users’ types, such as,<br>visitors and registered users. Your task is to add a standard user management feature to your app. </p>
+<div class="page-footer"><button class="hidden"></button><button class="next">Next</button></div></div><div class="page" id="page-2" style="display:none;"><h1 class="pageTitle">Environment setup</h1>
+<p>If your Theia workspace has been reset and you want to continue from where you left off previously, you can<br><code>git clone</code> or pull the latest code from your GitHub repository. </p>
+<ul>
+<li>Set up the Python runtime again if Theia workspace has been reset.</li></ul>
+<pre class="prettyprint linenums prettyprinted" style="padding-right: 42px;"><ol class="formatted-line-numbers"><li>1</li></ol><ol class="linenums"><li class="L0"><code><span class="pln">python3 </span><span class="pun">-</span><span class="pln">m pip install </span><span class="pun">-</span><span class="pln">U </span><span class="pun">-</span><span class="pln">r requirements</span><span class="pun">.</span><span class="pln">txt</span></code></li></ol><button title="Copy" class="action-code-block copy-code-block one-line"><i class="fa fa-copy" aria-hidden="true"></i><span class="popuptext" id="md-code-block-copy-0">Copied!</span></button></pre>
+<p>Note: You may need to perform migrations for a new Theia environment.</p>
+<div class="page-footer"><button class="previous">Previous</button><button class="next">Next</button></div></div><div class="page" id="page-3" style="display:none;"><h1 class="pageTitle">Create a superuser for your app</h1>
+<p>Let’s create a superuser first.</p>
+<ul>
+<li>Stop the server, if started. <code>cd</code> to <code>/server</code> folder and run:</li></ul>
+<pre class="prettyprint linenums prettyprinted" style="padding-right: 42px;"><ol class="formatted-line-numbers"><li>1</li></ol><ol class="linenums"><li class="L0"><code><span class="pln">python3 manage</span><span class="pun">.</span><span class="pln">py createsuperuser</span></code></li></ol><button title="Copy" class="action-code-block copy-code-block one-line"><i class="fa fa-copy" aria-hidden="true"></i><span class="popuptext" id="md-code-block-copy-1">Copied!</span></button></pre>
+<p>With <code>Username</code>, <code>Email</code>, <code>Password</code> entered, you should see a message indicating that the superuser has been created:</p>
+<pre class="prettyprint linenums prettyprinted" style="padding-right: 42px;"><ol class="formatted-line-numbers"><li>1</li></ol><ol class="linenums"><li class="L0"><code><span class="typ">Superuser</span><span class="pln"> created successfully</span><span class="pun">.</span></code></li></ol><button title="Copy" class="action-code-block copy-code-block one-line"><i class="fa fa-copy" aria-hidden="true"></i><span class="popuptext" id="md-code-block-copy-2">Copied!</span></button></pre>
+<p>Start the server again and log in to the Admin site as the superuser.</p>
+<pre class="prettyprint linenums prettyprinted" style="padding-right: 42px;"><ol class="formatted-line-numbers"><li>1</li></ol><ol class="linenums"><li class="L0"><code><span class="pln">python3 manage</span><span class="pun">.</span><span class="pln">py runserver</span></code></li></ol><button title="Copy" class="action-code-block copy-code-block one-line"><i class="fa fa-copy" aria-hidden="true"></i><span class="popuptext" id="md-code-block-copy-3">Copied!</span></button></pre>
+<ul>
+<li>Click on the Skills Network button on the right, it will open the “Skills Network Toolbox”. Then click <code>OTHER</code>, then <code>Launch Application</code>. From there you should be able to enter the port as <code>8000</code> and launch the development server.</li></ul>
+<img src="./02.1.User Management_files/Launch_Application.png" width="80%" style="border:solid 1px grey;">
+
+<p>After the browser tab opens, add the <code>/admin</code> path. Your full URL should look like the following:</p>
+<p><code>https://userid-8000.theiadocker-1.proxy.cognitiveclass.ai/admin</code></p>
+<ul>
+<li><p>Log in to the admin site with the credentials you just created for the superuser.</p>
+</li><li><p>Click <code>Users</code> under the <code>AUTHENTICATION AND AUTHORIZATION</code> section. You should be able to view the superuser<br>you just created.</p>
+</li></ul>
+<div class="page-footer"><button class="previous">Previous</button><button class="next">Next</button></div></div><div class="page" id="page-4" style="display:none;"><h1 class="pageTitle">Add user login/logout and signup menu items</h1>
+<p>First, let’s add login/logout and signup menu items to the navigation bar <code>&lt;nav&gt;</code> created in<br>the previous lab.</p>
+<ul>
+<li>Open <code>./templates/djangoapp/index.html</code> and find the created navigation bar <code>&lt;nav&gt;</code> to the html template.</li></ul>
+<h4><span class="header-link octicon octicon-link"></span>Add the following menu items to <code>&lt;nav&gt;</code>:</h4><br>
+ - A form with one text input to accept user name and one password text input to accept password. <br>
+ - A login submission button/link pointing to a Django login view, to be created later. <br>
+ - A signup link/button pointing to a Django signup view, to be created later. 
+<br> 
+
+<p>The created <code>&lt;nav&gt;</code> bar for login and signup may look like the following screenshot: <br></p>
+<img src="./02.1.User Management_files/1-user-management-login.png">
+
+<p><br> <br></p>
+<h4><span class="header-link octicon octicon-link"></span>Add the following navigation bar items after user has been authenticated:</h4><br>
+ - A text label to display user's first name or username. <br>
+ - A signout submission button/link pointing to a signout view, to be created later.
+<br>
+
+<p>The <code>&lt;nav&gt;</code> bar for an authenticated user may look like the following screenshot: <br></p>
+<img src="./02.1.User Management_files/2-user-management-logout.png">
+
+<p><br> <br></p>
+<p>More details about adding Bootstrap navigation bar with login/logout and signup menu items could be found in this lab:</p>
+<p><a href="https://cocl.us/qwjF4" target="_blank">Bootstrap Integration</a></p>
+<div class="page-footer"><button class="previous">Previous</button><button class="next">Next</button></div></div><div class="page" id="page-5" style="display:none;"><h1 class="pageTitle">Add a new login view</h1>
+<p>Next, you need to create a new login Django view to handle a login request.</p>
+<ul>
+<li><p>Open <code>djangoapp/views.py</code> and add a new login view to authenticate user.</p>
+</li><li><p>Configure a route for the login view by adding a path entry in <code>djangoapp/urls.py</code>.</p>
+</li></ul>
+<p>You may refer to this lab to get more details about Django authentication:</p>
+<p><a href="https://cocl.us/jHlDe" target="_blank">Django Authentication System</a></p>
+<h3><span class="header-link octicon octicon-link"></span>Take a screenshot for peer-review:</h3><p>After you have created the login view, please take a screenshot and name it as <code>login.jpg</code> or <code>login.png</code> for peer-review.</p>
+<div class="page-footer"><button class="previous">Previous</button><button class="next">Next</button></div></div><div class="page" id="page-6" style="display:none;"><h1 class="pageTitle">Add a new logout view</h1>
+<p>After the user can login, you need to create a new logout Django view to handle the logout request.</p>
+<ul>
+<li><p>Open <code>djangoapp/views.py</code> and add a new logout view to handle a logout request.</p>
+</li><li><p>Configure a route for the logout view by adding a path entry in <code>djangoapp/urls.py</code>.</p>
+</li></ul>
+<p>You may refer to this lab to get more details about Django authentication:</p>
+<p><a href="https://cocl.us/jHlDe" target="_blank">Django Authentication System</a></p>
+<h3><span class="header-link octicon octicon-link"></span>Take a screenshot for peer-review:</h3><p>After you have created the logout view, please take a screenshot and name it as <code>logout.jpg</code> or <code>logout.png</code> for peer-review.</p>
+<div class="page-footer"><button class="previous">Previous</button><button class="next">Next</button></div></div><div class="page" id="page-7" style="display:none;"><h1 class="pageTitle">Add a sign-up template</h1>
+<p>At this point, you should be able to log in and log out with the superuser you created earlier. </p>
+<p>Next, you will create a signup or registration page to create new regular users.</p>
+<ul>
+<li><p>Open <code>./templates/djangoapp/registration.html</code> and add a registration form with: <br></p>
+<ul>
+<li>A text input to receive first name.</li><li>A text input to receive last name.</li><li>A text input to receive username.</li><li>A password text input to receive password.</li><li>A submission button pointing to a signup view, to be created later.</li></ul>
+</li></ul>
+<p>The new signup page may look like the following screenshot: <br></p>
+<img src="./02.1.User Management_files/3-user-management-signup.png" width="600">
+  
+
+<div class="page-footer"><button class="previous">Previous</button><button class="next">Next</button></div></div><div class="page" id="page-8" style="display:none;"><h1 class="pageTitle">Add a new sign-up view</h1>
+<p>You also need to create a new signup Django view in order to register(create) a new user and then log in the user.</p>
+<ul>
+<li><p>Open <code>djangoapp/views.py</code>, add a new sign-up view.</p>
+</li><li><p>Configure a route for the signup view by adding a path entry in <code>djangoapp/urls.py</code>.</p>
+</li></ul>
+<p>You may refer to this lab to get more details about Django authentication:</p>
+<p><a href="https://cocl.us/jHlDe" target="_blank">Django Authentication System</a></p>
+<h3><span class="header-link octicon octicon-link"></span>Take a screenshot for peer-review:</h3><p>After you have created the sign-up view, please take a screenshot and name it<br>as <code>sign-up.jpg</code> or <code>sign-up.png</code> for peer-review.</p>
+<div class="page-footer"><button class="previous">Previous</button><button class="next">Next</button></div></div><div class="page" id="page-9" style="display:none;"><h1 class="pageTitle">Test the updated app</h1>
+<p>Now you may want to test the updated Django app with signup, login, and logout end-to-end.</p>
+<div class="page-footer"><button class="previous">Previous</button><button class="next">Next</button></div></div><div class="page" id="page-10" style="display:none;"><h1 class="pageTitle">Submission</h1>
+<p>Commit and push the changes to your GitHub repository.</p>
+<p>If you need to refresh your memory on how to commit and push to GitHub in Theia lab environment, please refer to this lab <a href="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-CD0101EN-SkillsNetwork/labs/GitHubLabs/Github_commit.md.html" target="_blank" rel="noopener noreferrer">Working with git in the Theia lab environment</a></p>
+<div class="page-footer"><button class="previous">Previous</button><button class="next">Next</button></div></div><div class="page" id="page-11" style="display:none;"><h1 class="pageTitle">Summary</h1>
+<p>In this lab, you have added user management related templates and views to the app.<br>In the next lab, you will start to create car/make related models, templates, and views.</p>
+<h2><span class="header-link octicon octicon-link"></span>Author(s)</h2><h4> Yan Luo </h4><h4></h4>
+
+<h3><span class="header-link octicon octicon-link"></span>Other Contributor(s)</h3><p>Upkar Lidder</p>
+<h2><span class="header-link octicon octicon-link"></span>Changelog</h2><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Version</th>
+<th>Changed by</th>
+<th>Change Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2022-09-20</td>
+<td>1.3</td>
+<td>K Sundararajan</td>
+<td>Updated pip (packages installation) command</td>
+</tr>
+<tr>
+<td>2022-09-14</td>
+<td>1.2</td>
+<td>K Sundararajan</td>
+<td>Updated instructions</td>
+</tr>
+<tr>
+<td>2022-09-01</td>
+<td>1.1</td>
+<td>K Sundararajan</td>
+<td>Updated <code>Launch Application</code> instructions as per the new Theia IDE</td>
+</tr>
+<tr>
+<td>2021-01-28</td>
+<td>1.0</td>
+<td>Yan Luo</td>
+<td>Created new instructions for Capstone project</td>
+</tr>
+</tbody></table>
+<h2><span class="header-link octicon octicon-link"></span></h2><h3> © IBM Corporation 2021. All rights reserved. </h3><h3></h3><div class="page-footer"><button class="previous">Previous</button></div></div></div></div></div>
+<div class="editormd-container-mask" style="display: none;"></div>
+<div class="editormd-mask"></div></div>
+</div>
+
+<script src="./02.1.User Management_files/jquery.min.js.download"></script>
+<script src="./02.1.User Management_files/editormd.js.download"></script>
+
+<script src="./02.1.User Management_files/en.js.download"></script>
+
+<script src="./02.1.User Management_files/common.js.download"></script>
+<script src="./02.1.User Management_files/render.js.download"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        let token = findGetParameter("token");
+
+        let LABS_BASE_URL = 'https://labs.cognitiveclass.ai';
+        let asset_library_prefix_url = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork';
+        let tool_type = "theia";
+        let projectId = "";
+        let filename = `labs/module_2_user_management/1-instructional-labs-theia-user-management.md`;
+        try {
+            let projectIdStored = false
+            let project = JSON.parse(localStorage.getItem("sn-project"))
+            if (project != null) {
+                if (projectId in project) {
+                    projectIdStored = true
+                    if (!(filename in project[projectId])) {
+                        project[projectId][filename] = {}
+                    }
+                }
+            }
+            if (!projectIdStored) {
+                project = {}
+                project[projectId] = {}
+                project[projectId][filename] = {}
+            }
+            window.localStorage.setItem("sn-project", JSON.stringify(project))
+        }
+        catch (e) {
+            console.log(e)
+        }
+
+        var authorEditor = editormd("test-editormd", "2.0.8", {
+
+            tool_type,
+            projectId,
+            filename,
+
+            width: "100%",
+            //height: "100%",
+            autoHeight: true,
+
+            // mode: 'markdown',
+
+            theme: "dark",
+            previewTheme: "dark",
+            editorTheme: "pastel-on-dark",
+
+            readOnly: true,
+
+            pluginPath: 'plugins/',
+
+
+            syncScrolling: false,
+
+            htmlDecode: 'img',
+
+            path: 'editormd/lib/',
+            watch: false,
+
+            // markdown,
+            toolbar: false,
+
+            atLink: false,
+            toc: true,
+            tocm: true,
+            tocDropdown: false,
+            tocTitle: "Table of Contents For your lab!",
+
+            tex: true,
+            flowChart: true,
+            sequenceDiagram: true,
+            codeFold: true, // Doesn't do anything?
+            taskList: true,
+            emoji: true,
+
+            saveMarkdownToTextarea: true,
+
+            onresize: function () {
+                $("html,body").css("overflow", "hidden");
+
+                this.preview.css({
+                    width: $(window).width(),
+                    height: $(window).height()
+                })
+
+                adjustProgressBarWidth()
+            },
+            fixCodeBlocks: function () {
+                adjustCodeBlocks(this);
+            },
+            onload: function () {
+                $("[type=\"file\"]").bind("change", function () {
+                    alert($(this).val());
+                    authorEditor.cm.replaceSelection($(this).val());
+                    console.log($(this).val(), authorEditor);
+                });
+
+                this.fullscreen();
+                this.previewing();
+
+                setPreviewWatchToolbar(this);
+
+                if (tool_type != "instructional-lab") {
+                    fixCustomPlugins(this);
+                }
+                setAssetLibraryPrefixUrl(asset_library_prefix_url);
+                //comms with UI
+                setParentUrl(LABS_BASE_URL);
+                establishCommsWithUI(this);
+                //let the UI know that the author-ide has loaded
+                requestToUI({ type: "frame_loaded" });
+            }
+        });
+    });
+</script>
+
+
+<script src="./02.1.User Management_files/bootstrap.bundle.min.js.download" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+    </script>
+
+</body></html>

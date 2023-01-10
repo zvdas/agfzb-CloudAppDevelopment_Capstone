@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="keywords" content="Editor.md,editor,Markdown Editor,Markdown" />
+    <meta name="description" content="Skills Network Author IDE" />
+    <title>Skills Network Editor</title>
+    <link rel="stylesheet" href="editormd/examples/css/style.css?version=2.0.8" />
+    <link rel="stylesheet" href="editormd/css/editormd.css?version=2.0.8" />
+    <link rel="stylesheet" href="public/css/custom.css?version=2.0.8" />
+    <link rel="shortcut icon" href="public/images/SN_favicon.png" type="image/x-icon" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="public/js/comms.js?version=2.0.8"></script>
+    <script src="//unpkg.com/alpinejs"></script>
+</head>
+
+<body>
+    <div id="layout">
+    <div id="test-editormd">
+        <textarea style="display:none;"># Final Project: Overview
+
+&lt;img src&#x3D;&quot;https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/images/IDSN-logo.png&quot; width&#x3D;&quot;200&quot; alt&#x3D;&quot;cognitiveclass.ai logo&quot;&gt;
+
+##
+
+The final project for this course has several steps that you must complete. The high-level step list given below will help to provide you with an overview of the whole project. The project is divided into smaller labs with detailed instructions for each step. You must complete all labs to complete the project successfully.
+
+## Project Breakdown
+
+**Prework: Sign up for IBM Cloud Lite account and create a Watson Natural Language Understanding service.**
+1. Create an IBM Cloud Lite account, if you don&#x27;t have one already.
+2. Create an instance of the Natural Language Understanding (NLU) service.
+
+**Fork the GitHub repo containing the project template. The main web application is a predefined Django application, 
+you will need to add some new features then build and run your project implementation.**
+1. Fork the repository in your account.
+2. Clone the repository in the IBM Skills Network Cloud IDE environment.
+3. Create static pages to finish the user stories.
+4. Run the application locally.
+
+**Add user management to the Django application.**
+1. Implement user management using the Django user authentication system.
+2. Set up continuous integration and delivery.
+
+**Implement backend services.**
+1. Create cloud functions to manage dealers and reviews.
+2. Create Django models and views to manage car model and car make.
+3. Create Django proxy services and views to integrate dealers, reviews, and cars together.
+ 
+**Add dynamic pages with Django templates.**
+1. Create a page that displays all the dealers.
+2. Create a page that displays reviews for a selected dealer.
+3. Create a page that lets the end user add a review for a selected dealer.
+
+**Run and test your application**
+1. Run your application on Cloud IDE
+2. Test the updated application locally
+
+## Solution architecture
+The solution will consist of multiple technologies
+1. The user interacts with the Django application through a web browser.
+2. The Django application handles the user authentication using the SQLite database as the persistance layer.
+3. The SQLite database also stores the &#x60;Car Make&#x60; and the &#x60;Car Model&#x60; data.
+4. The dealerships and the reviews are stored in Cloudant, a NoSQL document based database.
+5. IBM Cloud functions are used to interface with the Cloudant database to get dealerships, get reviews and post reviews.
+6. The Django application talks to the IBM Cloud Functions via a set or proxy services.
+   
+![Solution architecture](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_1_static_pages/images/v2.capstone-dealership-architecture.png) { width&#x3D;800}
+## Submit your project for grading
+
+You will need to submit several screenshots for each module. The instructions will give you filenames 
+and samples for each screenshot. Make sure to use the specified filename, as your reviewer will identify the 
+correct screenshot based on the filename. 
+
+## Next Steps
+To complete the lab, follow the step-by-step instructions given in the lab, starting with the capstone prework.
+
+## Author(s)
+[Upkar Lidder](https://www.linkedin.com/in/lidderupk/?utm_medium&#x3D;Exinfluencer&amp;utm_source&#x3D;Exinfluencer&amp;utm_content&#x3D;000026UJ&amp;utm_term&#x3D;10006555&amp;utm_id&#x3D;NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMCD0321ENSkillsNetwork1046-2022-01-01)
+
+## Other contributors
+Lavanya
+
+## Changelog
+| Date | Version | Changed by | Change Description |
+|------|--------|--------|---------|
+| 2021-02-05 | 0.1 | Upkar | Initial version created |
+| 2022-11-13 | 0.2 | Yan | CF band-aid fix |
+|   |   |   |   |
+
+## &lt;h3 align&#x3D;&quot;center&quot;&gt; © IBM Corporation 2020. All rights reserved. &lt;h3/&gt;
+</textarea>
+    </div>
+</div>
+
+<script src="editormd/examples/js/jquery.min.js"></script>
+<script src="editormd/editormd.js?version=2.0.8"></script>
+
+<script src="editormd/languages/en.js"></script>
+
+<script src="public/js/common.js?version=2.0.8"></script>
+<script src="public/js/render.js?version=2.0.8"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        let token = findGetParameter("token");
+
+        let LABS_BASE_URL = 'https://labs.cognitiveclass.ai';
+        let asset_library_prefix_url = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork';
+        let tool_type = "instructional-lab";
+        let projectId = "";
+        let filename = `labs/module_1_static_pages/2-capstone-overview.md`;
+        try {
+            let projectIdStored = false
+            let project = JSON.parse(localStorage.getItem("sn-project"))
+            if (project != null) {
+                if (projectId in project) {
+                    projectIdStored = true
+                    if (!(filename in project[projectId])) {
+                        project[projectId][filename] = {}
+                    }
+                }
+            }
+            if (!projectIdStored) {
+                project = {}
+                project[projectId] = {}
+                project[projectId][filename] = {}
+            }
+            window.localStorage.setItem("sn-project", JSON.stringify(project))
+        }
+        catch (e) {
+            console.log(e)
+        }
+
+        var authorEditor = editormd("test-editormd", "2.0.8", {
+
+            tool_type,
+            projectId,
+            filename,
+
+            width: "100%",
+            //height: "100%",
+            autoHeight: true,
+
+            // mode: 'markdown',
+
+            theme: "dark",
+            previewTheme: "dark",
+            editorTheme: "pastel-on-dark",
+
+            readOnly: true,
+
+            pluginPath: 'plugins/',
+
+
+            syncScrolling: false,
+
+            htmlDecode: 'img',
+
+            path: 'editormd/lib/',
+            watch: false,
+
+            // markdown,
+            toolbar: false,
+
+            atLink: false,
+            toc: true,
+            tocm: true,
+            tocDropdown: false,
+            tocTitle: "Table of Contents For your lab!",
+
+            tex: true,
+            flowChart: true,
+            sequenceDiagram: true,
+            codeFold: true, // Doesn't do anything?
+            taskList: true,
+            emoji: true,
+
+            saveMarkdownToTextarea: true,
+
+            onresize: function () {
+                $("html,body").css("overflow", "hidden");
+
+                this.preview.css({
+                    width: $(window).width(),
+                    height: $(window).height()
+                })
+
+                adjustProgressBarWidth()
+            },
+            fixCodeBlocks: function () {
+                adjustCodeBlocks(this);
+            },
+            onload: function () {
+                $("[type=\"file\"]").bind("change", function () {
+                    alert($(this).val());
+                    authorEditor.cm.replaceSelection($(this).val());
+                    console.log($(this).val(), authorEditor);
+                });
+
+                this.fullscreen();
+                this.previewing();
+
+                setPreviewWatchToolbar(this);
+
+                if (tool_type != "instructional-lab") {
+                    fixCustomPlugins(this);
+                }
+                setAssetLibraryPrefixUrl(asset_library_prefix_url);
+                //comms with UI
+                setParentUrl(LABS_BASE_URL);
+                establishCommsWithUI(this);
+                //let the UI know that the author-ide has loaded
+                requestToUI({ type: "frame_loaded" });
+            }
+        });
+    });
+</script>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+    </script>
+
+</html>

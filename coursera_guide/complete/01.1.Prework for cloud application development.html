@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<!-- saved from url=(0436)https://author-ide.skills.network/render?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZF9pbnN0cnVjdGlvbnNfdXJsIjoiaHR0cHM6Ly9jZi1jb3Vyc2VzLWRhdGEuczMudXMuY2xvdWQtb2JqZWN0LXN0b3JhZ2UuYXBwZG9tYWluLmNsb3VkL0lCTS1DRDAzMjFFTi1Ta2lsbHNOZXR3b3JrL2xhYnMvbW9kdWxlXzFfc3RhdGljX3BhZ2VzLzMtY2Fwc3RvbmUtcHJld29yay5tZCIsInRvb2xfdHlwZSI6Imluc3RydWN0aW9uYWwtbGFiIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE2NzIzOTc5Njl9.L8wqMDv1d-eJSFrYGeTXlR5RAiP-ImPxGE3K1y7Ke5U -->
+<html lang="en" style="overflow: hidden;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="Editor.md,editor,Markdown Editor,Markdown">
+    <meta name="description" content="Skills Network Author IDE">
+    <title>Skills Network Editor</title>
+    <link rel="stylesheet" href="./01.1.Prework for cloud application development_files/style.css">
+    <link rel="stylesheet" href="./01.1.Prework for cloud application development_files/editormd.css">
+    <link rel="stylesheet" href="./01.1.Prework for cloud application development_files/custom.css">
+    <link rel="shortcut icon" href="https://author-ide.skills.network/public/images/SN_favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./01.1.Prework for cloud application development_files/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="./01.1.Prework for cloud application development_files/comms.js.download"></script>
+    <script src="./01.1.Prework for cloud application development_files/alpinejs"></script>
+<script id="editormd-lib-xss" type="text/javascript" src="./01.1.Prework for cloud application development_files/xss.js.download"></script><link type="text/css" rel="stylesheet" href="./01.1.Prework for cloud application development_files/codemirror.min.css"><link type="text/css" rel="stylesheet" href="./01.1.Prework for cloud application development_files/foldgutter.css"><script id="editormd-lib-codemirror-codemirror-min" type="text/javascript" src="./01.1.Prework for cloud application development_files/codemirror.min.js.download"></script><script id="editormd-lib-codemirror-modes-min" type="text/javascript" src="./01.1.Prework for cloud application development_files/modes.min.js.download"></script><script id="editormd-lib-codemirror-addons-min" type="text/javascript" src="./01.1.Prework for cloud application development_files/addons.min.js.download"></script><style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCxc4EsA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fChc4EsA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu72xKOzY.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7mxKOzY.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4WxKOzY.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7WxKOzY.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7GxKOzY.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCRc4EsA.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fABc4EsA.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCBc4EsA.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBxc4EsA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCxc4EsA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fChc4EsA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCRc4EsA.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfABc4EsA.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCBc4EsA.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBxc4EsA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCxc4EsA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfChc4EsA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style><style>.ucbzx-button-wrapper {
+    position: absolute !important;
+    z-index: 1000 !important;
+    top: 0 !important;
+    right: 0 !important;
+}
+
+.ucbzx-button {
+    display: block;
+    border: none !important;
+    /* outline: none !important; */
+    background: #3c3c54 !important;
+    padding: 0 !important;
+    border-radius: 5px;
+    width: 36px !important;
+    height: 36px !important;
+}
+
+.ucbzx-button:active {
+    border: none !important;
+}
+
+.ucbzx-button:disabled {
+    cursor: default !important;
+}
+
+.ucbzx-download-img {
+    display: block !important;
+    width: 36px !important;
+    height: 36px !important;
+    cursor: pointer !important;
+    margin: 0 !important;
+}
+
+.ucbzx-hide {
+    display: none !important;
+}
+
+.ucbzx-loader {
+    display: block;
+    box-sizing: content-box !important;
+    width: 30px !important;
+    height: 30px !important;
+    padding: 3px !important;
+    animation: rotate 1s linear infinite;
+    margin: 0 !important;
+}
+
+/*
+    RESOLUTIONS CHOICE
+*/
+
+.ucbzx-resolutions-list {
+    position: absolute !important;
+    top: 36px !important;
+    right: 0 !important;
+    background: #3c3c54 !important;
+    color: #dbdbdb !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 14px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.ucbzx-resolutions-list li {
+    margin: 4px !important;
+    padding: 0 !important;
+    font-weight: bold !important;
+    white-space: nowrap !important;
+    width: 130px !important;
+    height: 30px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.ucbzx-list-item-tickbox {
+    width: 20px !important;
+    height: 20px !important;
+    background: rgba(255, 255, 255, 0.219) !important;
+    /* border-radius: 5px !important; */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* font-size: 17px !important; */
+    /* border: 1px solid rgba(255, 255, 255, 0.835) !important; */
+    cursor: pointer !important;
+    margin-left: 4px !important;
+}
+
+.ucbzx-resolutions-list > li::before {
+    display: none;
+}
+
+.ucbzx-list-item-tickbox:not(.ucbzx-list-item-tickbox-checked):hover {
+    background: rgba(255, 255, 255, 0.37) !important;
+}
+
+.ucbzx-list-item-tickbox.ucbzx-list-item-tickbox-checked {
+    cursor: default !important;
+}
+
+.ucbzx-list-item-tickbox-checked::after {
+    content: "\2713" !important;
+    color: white !important;
+}
+
+.ucbzx-list-item-text {
+    /* border-radius: 5px !important; */
+    flex-grow: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    height: 100% !important;
+    margin-left: 10px !important;
+}
+
+.ucbzx-list-item-text:hover {
+    background: rgba(255, 255, 255, 0.37) !important;
+    color: white !important;
+}
+
+/* account for the fact that we got rid of the tickbox there */
+.ucbzx-resolutions-list li[data-type="captions"] .ucbzx-list-item-text {
+    margin-left: 34px !important;
+    font-style: italic;
+}
+
+/*
+    MISC
+*/
+
+.ucbzx-arrow-container {
+    background: none !important;
+    position: absolute !important;
+    top: 36px !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 18px solid transparent !important;
+    border-right: 18px solid transparent !important;
+    border-top: 18px solid #3c3c54 !important;
+    /* border-bottom: none !important; */
+    cursor: pointer !important;
+}
+
+.ucbzx-arrow-container::after {
+    position: absolute !important;
+    top: -18px !important;
+    left: -4px !important;
+    content: "" !important;
+    border: 1px solid #dbdbdb !important;
+    border-width: 0 3px 3px 0 !important;
+    display: inline-block !important;
+    padding: 3px !important;
+    transform: rotate(45deg);
+}
+
+.ucbzx-button:focus,
+.ucbzx-arrow-container:focus,
+.ucbzx-resolutions-list:focus,
+.ucbzx-list-item-tickbox:focus,
+.ucbzx-list-item-text:focus {
+    outline: 1px solid white !important;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*
+    RESET STYLES
+*/
+.ucbzx-button-wrapper button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    outline: none;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
+}
+
+.ucbzx-button-wrapper li,
+.ucbzx-button-wrapper li * {
+    margin: 0;
+    font: inherit;
+    font-style: inherit;
+    font-size: inherit;
+}</style><link type="text/css" rel="stylesheet" href="./01.1.Prework for cloud application development_files/pastel-on-dark.css"><script id="editormd-lib-marked-min" type="text/javascript" src="./01.1.Prework for cloud application development_files/marked.min.js.download"></script><script id="editormd-lib-prettify-min" type="text/javascript" src="./01.1.Prework for cloud application development_files/prettify.min.js.download"></script><script id="editormd-lib-raphael-min" type="text/javascript" src="./01.1.Prework for cloud application development_files/raphael.min.js.download"></script><script id="editormd-lib-underscore-min" type="text/javascript" src="./01.1.Prework for cloud application development_files/underscore.min.js.download"></script><script id="editormd-lib-flowchart-min" type="text/javascript" src="./01.1.Prework for cloud application development_files/flowchart.min.js.download"></script><script id="editormd-lib-jquery-flowchart-min" type="text/javascript" src="./01.1.Prework for cloud application development_files/jquery.flowchart.min.js.download"></script><script id="editormd-lib-sequence-diagram-min" type="text/javascript" src="./01.1.Prework for cloud application development_files/sequence-diagram.min.js.download"></script><link type="text/css" rel="stylesheet" href="./01.1.Prework for cloud application development_files/katex.min.css"><script id="https:-cdnjs-cloudflare-com-ajax-libs-KaTeX-0-15-6-katex-min" type="text/javascript" src="./01.1.Prework for cloud application development_files/katex.min.js.download"></script></head>
+
+<body style="overflow: hidden;">
+    <div id="layout">
+    <div id="test-editormd" class="editormd editormd-vertical editormd-theme-dark editormd-fullscreen" style="width: 1280px; height: 601px;">
+        <textarea style="display:none;" class="editormd-markdown-textarea" placeholder="Enjoy Markdown! coding now..." name="test-editormd-markdown-doc">### Prework for cloud application development
+
+&lt;img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"&gt;
+
+##
+
+We will use the following IBM services to develop and deploy the cloud application: 
+
+1. IBM Natural Language Understanding
+
+2. IBM Cloud Functions
+
+3. IBM Cloudant
+
+Navigate to [cloud.ibm.com](https://cloud.ibm.com/?utm_medium=Exinfluencer&amp;utm_source=Exinfluencer&amp;utm_content=000026UJ&amp;utm_term=10006555&amp;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMCD0321ENSkillsNetwork1046-2022-01-01) to create a lite account if you do not have yet.
+
+## Steps to be followed to create the services
+
+1. &lt;a href="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-CC0101EN-SkillsNetwork/labs/module%201/HandsonLab_CreateIBMCloudAccount.md.html"&gt;Create IBM Cloud Account&lt;/a&gt;, 
+if you don't already have an account. To access the resources and services that IBM Cloud provides, you need an IBM Cloud account.
+
+2. &lt;a href="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-CD0201EN-SkillsNetwork/labs/FinalProject/3-create-services/instructions.md.html"&gt;Create NLU and Cloudant Service.&lt;/a&gt; 
+All product reviews created by authenticated users will be stored in Cloudant. 
+You will use the NLU service in your cloud application to analyze the tone of the review comments posted by users.
+
+    &lt;img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_1_static_pages/images/resources-sample-screenshot.png" width="75%" style="border:1px solid grey"&gt;
+
+3. Fork the [ GitHub repository](https://github.com/ibm-developer-skills-network/agfzb-CloudAppDevelopment_Capstone.git) in this link to your own GitHub space. Later, you will clone your GitHub repository to the cloud IDE lab environment. 
+
+    &gt; **Note**: You will need a GitHub account to fork the repository. If you don't have one already, go to [GitHub](https://github.com/) and create one. 
+
+    &lt;img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_1_static_pages/images/fork_capstone_proj_repo.png" width="100%" style="border:1px solid grey"&gt;
+
+    
+Now that you have finished the prework, you can follow the instructional lab for this module and complete the use cases.
+
+## Author(s)
+&lt;h4&gt; Lavanya &lt;h4/&gt;
+
+### Other Contributor(s) 
+Upkar Lidder
+Priya
+
+## Changelog
+| Date | Version | Changed by | Change Description |
+|------|--------|--------|---------|
+| 2022-11-13 | 1.2 | Yan | Removed IBM Cloud Foundry |
+| 2021-01-28 | 1.1 | Lavanya | Made changes in the code to make instruction explicit |
+| 2021-01-28 | 1.0 | Lavanya | Created new instructions for Capstone project |
+
+## &lt;h3 align="center"&gt; © IBM Corporation 2021. All rights reserved. &lt;h3/&gt;
+</textarea><div class="CodeMirror cm-s-pastel-on-dark CodeMirror-wrap" translate="no" style="font-size: 13px; width: 1281px; height: 601px; margin-top: 0px; display: none;"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 61px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" disabled="" readonly="" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; min-height: 1em; outline: none;"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true" style="bottom: 0px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 49px; margin-bottom: -7px; border-right-width: 43px; min-height: 1330px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>52</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 12px; top: 0px; height: 22.3958px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -49px; width: 49px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-header cm-header-3">### Prework for cloud application development</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">src</span>=<span class="cm-string">"</span><span class="cm-string cm-link">https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/images/IDSN-logo.png</span><span class="cm-string">"</span> <span class="cm-attribute">width</span>=<span class="cm-string">"200"</span> <span class="cm-attribute">alt</span>=<span class="cm-string">"cognitiveclass.ai logo"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-header cm-header-2">##</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">We will use the following IBM services to develop and deploy the cloud application:<span class="cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">1. IBM Natural Language Understanding</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">2. IBM Cloud Functions</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">3. IBM Cloudant</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Navigate to <span class="cm-link">[cloud.ibm.com]</span><span class="cm-string cm-url">(https://cloud.ibm.com/?utm_medium=Exinfluencer&amp;utm_source=Exinfluencer&amp;utm_content=000026UJ&amp;utm_term=10006555&amp;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMCD0321ENSkillsNetwork1046-2022-01-01)</span> to create a lite account if you do not have yet.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">17</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-header cm-header-2">## Steps to be followed to create the services</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">18</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">19</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">1. </span><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">href</span>=<span class="cm-string">"</span><span class="cm-string cm-link">https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-CC0101EN-SkillsNetwork/labs/module%201/HandsonLab_CreateIBMCloudAccount.md.html</span><span class="cm-string">"</span><span class="cm-tag cm-bracket">&gt;</span>Create IBM Cloud Account<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-variable-2">,</span><span class="cm-variable-2 cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">20</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">if you don't already have an account. To access the resources and services that IBM Cloud provides, you need an IBM Cloud account.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">21</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">22</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">2. </span><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">href</span>=<span class="cm-string">"</span><span class="cm-string cm-link">https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-CD0201EN-SkillsNetwork/labs/FinalProject/3-create-services/instructions.md.html</span><span class="cm-string">"</span><span class="cm-tag cm-bracket">&gt;</span>Create NLU and Cloudant Service.<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-variable-2 cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">23</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">All product reviews created by authenticated users will be stored in Cloudant.<span class="cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">24</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">You will use the NLU service in your cloud application to analyze the tone of the review comments posted by users.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">25</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">26</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">&lt;img src="</span><span class="cm-comment cm-link">https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_1_static_pages/images/resources-sample-screenshot.png</span><span class="cm-comment">" width="75%" style="border:1px solid grey"&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">27</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">28</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-2">3. Fork the </span><span class="cm-link cm-variable-2">[ GitHub repository]</span><span class="cm-string cm-url cm-variable-2">(https://github.com/ibm-developer-skills-network/agfzb-CloudAppDevelopment_Capstone.git)</span><span class="cm-variable-2"> in this link to your own GitHub space. Later, you will clone your GitHub repository to the cloud IDE lab environment.</span><span class="cm-variable-2 cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">29</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">30</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-quote cm-quote-1 cm-variable-2">&gt; </span><span class="cm-strong cm-quote cm-quote-1 cm-variable-2">**Note**</span><span class="cm-quote cm-quote-1 cm-variable-2">: You will need a GitHub account to fork the repository. If you don't have one already, go to </span><span class="cm-link cm-quote cm-quote-1 cm-variable-2">[GitHub]</span><span class="cm-string cm-url cm-quote cm-quote-1 cm-variable-2">(https://github.com/)</span><span class="cm-quote cm-quote-1 cm-variable-2"> and create one.</span><span class="cm-quote cm-quote-1 cm-variable-2 cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">31</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">32</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">src</span>=<span class="cm-string">"</span><span class="cm-string cm-link">https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_1_static_pages/images/fork_capstone_proj_repo.png</span><span class="cm-string">"</span> <span class="cm-attribute">width</span>=<span class="cm-string">"100%"</span> <span class="cm-attribute">style</span>=<span class="cm-string">"border:1px solid grey"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">33</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">34</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-overlay cm-trailingspace"> &nbsp; &nbsp;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">35</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Now that you have finished the prework, you can follow the instructional lab for this module and complete the use cases.</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">36</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">37</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-header cm-header-2">## Author(s)</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">38</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h4</span><span class="cm-tag cm-bracket">&gt;</span> Lavanya <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h4</span><span class="cm-tag cm-bracket">/&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">39</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">40</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">### Other Contributor(s)<span class="cm-overlay cm-trailingspace"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">41</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Upkar Lidder</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">42</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Priya</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">43</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">44</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">## Changelog</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">45</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| Date | Version | Changed by | Change Description |</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">46</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|------|--------|--------|---------|</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">47</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| 2022-11-13 | 1.2 | Yan | Removed IBM Cloud Foundry |</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">48</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| 2021-01-28 | 1.1 | Lavanya | Made changes in the code to make instruction explicit |</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">49</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| 2021-01-28 | 1.0 | Lavanya | Created new instructions for Capstone project |</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">50</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">51</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">## <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h3</span> <span class="cm-attribute">align</span>=<span class="cm-string">"center"</span><span class="cm-tag cm-bracket">&gt;</span> © IBM Corporation 2021. All rights reserved. <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h3</span><span class="cm-tag cm-bracket">/&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -49px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">52</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 43px; width: 1px; border-bottom: 0px solid transparent; top: 1330px;"></div><div class="CodeMirror-gutters" style="height: 1373px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div>
+    
+
+<div class="editormd-preview editormd-preview-theme-dark" style="background: rgb(255, 255, 255); top: 0px; width: 1280px; height: 601px;"><div class="md-header" style="z-index:1;"><div class="toolbar"><button class="toc" style="visibility: hidden;"><i class="fa fa-bars" aria-hidden="true" style="margin-right: 15px; display: inline;"></i><p>Table of Contents</p></button><div class="tools">         <button class="tool-icon" id="print" title="Print instructions"><i class="fa fa-print" aria-hidden="true"></i></button>         <button class="tool-icon" id="font-up" title="Increase font size"><i class="fa fa-font" aria-hidden="true"></i><sup>+</sup></button>         <button class="tool-icon" id="font-down" title="Decrease font size"><i class="fa fa-font" aria-hidden="true"></i><sup>-</sup></button>     </div></div>         <nav class="instruction-progress-bar" aria-label="pagination">             <div class="instruction-progress-fill"></div>             <ul class="pagination"></ul>         </nav></div><div class="table-of-contents"></div><div class="sticky-header" style="z-index:1;"></div><div class="markdown-body editormd-preview-container editormd-preview-active" previewcontainer="true"><h3><span class="header-link octicon octicon-link"></span>Prework for cloud application development</h3><img src="./01.1.Prework for cloud application development_files/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo">
+
+<h2><span class="header-link octicon octicon-link"></span></h2><p>We will use the following IBM services to develop and deploy the cloud application: </p>
+<ol>
+<li><p>IBM Natural Language Understanding</p>
+</li><li><p>IBM Cloud Functions</p>
+</li><li><p>IBM Cloudant</p>
+</li></ol>
+<p>Navigate to <a href="https://cloud.ibm.com/?utm_medium=Exinfluencer&amp;utm_source=Exinfluencer&amp;utm_content=000026UJ&amp;utm_term=10006555&amp;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMCD0321ENSkillsNetwork1046-2022-01-01" target="_blank" rel="noopener noreferrer">cloud.ibm.com</a> to create a lite account if you do not have yet.</p>
+<h2><span class="header-link octicon octicon-link"></span>Steps to be followed to create the services</h2><ol>
+<li><p><a href="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-CC0101EN-SkillsNetwork/labs/module%201/HandsonLab_CreateIBMCloudAccount.md.html">Create IBM Cloud Account</a>,<br>if you don’t already have an account. To access the resources and services that IBM Cloud provides, you need an IBM Cloud account.</p>
+</li><li><p><a href="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-CD0201EN-SkillsNetwork/labs/FinalProject/3-create-services/instructions.md.html">Create NLU and Cloudant Service.</a><br>All product reviews created by authenticated users will be stored in Cloudant.<br>You will use the NLU service in your cloud application to analyze the tone of the review comments posted by users.</p>
+ <img src="./01.1.Prework for cloud application development_files/resources-sample-screenshot.png" width="75%" style="border:1px solid grey;">
+</li><li><p>Fork the <a href="https://github.com/ibm-developer-skills-network/agfzb-CloudAppDevelopment_Capstone.git" target="_blank" rel="noopener noreferrer"> GitHub repository</a> in this link to your own GitHub space. Later, you will clone your GitHub repository to the cloud IDE lab environment. </p>
+<blockquote>
+<p><strong>Note</strong>: You will need a GitHub account to fork the repository. If you don’t have one already, go to <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a> and create one. </p>
+</blockquote>
+ <img src="./01.1.Prework for cloud application development_files/fork_capstone_proj_repo.png" width="100%" style="border:1px solid grey;"></li></ol>
+<p>Now that you have finished the prework, you can follow the instructional lab for this module and complete the use cases.</p>
+<h2><span class="header-link octicon octicon-link"></span>Author(s)</h2><h4> Lavanya </h4><h4></h4>
+
+<h3><span class="header-link octicon octicon-link"></span>Other Contributor(s)</h3><p>Upkar Lidder<br>Priya</p>
+<h2><span class="header-link octicon octicon-link"></span>Changelog</h2><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Version</th>
+<th>Changed by</th>
+<th>Change Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2022-11-13</td>
+<td>1.2</td>
+<td>Yan</td>
+<td>Removed IBM Cloud Foundry</td>
+</tr>
+<tr>
+<td>2021-01-28</td>
+<td>1.1</td>
+<td>Lavanya</td>
+<td>Made changes in the code to make instruction explicit</td>
+</tr>
+<tr>
+<td>2021-01-28</td>
+<td>1.0</td>
+<td>Lavanya</td>
+<td>Created new instructions for Capstone project</td>
+</tr>
+</tbody></table>
+<h2><span class="header-link octicon octicon-link"></span></h2><h3> © IBM Corporation 2021. All rights reserved. </h3><h3></h3></div></div>
+<div class="editormd-container-mask" style="display: none;"></div>
+<div class="editormd-mask"></div></div>
+</div>
+
+<script src="./01.1.Prework for cloud application development_files/jquery.min.js.download"></script>
+<script src="./01.1.Prework for cloud application development_files/editormd.js.download"></script>
+
+<script src="./01.1.Prework for cloud application development_files/en.js.download"></script>
+
+<script src="./01.1.Prework for cloud application development_files/common.js.download"></script>
+<script src="./01.1.Prework for cloud application development_files/render.js.download"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        let token = findGetParameter("token");
+
+        let LABS_BASE_URL = 'https://labs.cognitiveclass.ai';
+        let asset_library_prefix_url = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork';
+        let tool_type = "instructional-lab";
+        let projectId = "";
+        let filename = `labs/module_1_static_pages/3-capstone-prework.md`;
+        try {
+            let projectIdStored = false
+            let project = JSON.parse(localStorage.getItem("sn-project"))
+            if (project != null) {
+                if (projectId in project) {
+                    projectIdStored = true
+                    if (!(filename in project[projectId])) {
+                        project[projectId][filename] = {}
+                    }
+                }
+            }
+            if (!projectIdStored) {
+                project = {}
+                project[projectId] = {}
+                project[projectId][filename] = {}
+            }
+            window.localStorage.setItem("sn-project", JSON.stringify(project))
+        }
+        catch (e) {
+            console.log(e)
+        }
+
+        var authorEditor = editormd("test-editormd", "2.0.8", {
+
+            tool_type,
+            projectId,
+            filename,
+
+            width: "100%",
+            //height: "100%",
+            autoHeight: true,
+
+            // mode: 'markdown',
+
+            theme: "dark",
+            previewTheme: "dark",
+            editorTheme: "pastel-on-dark",
+
+            readOnly: true,
+
+            pluginPath: 'plugins/',
+
+
+            syncScrolling: false,
+
+            htmlDecode: 'img',
+
+            path: 'editormd/lib/',
+            watch: false,
+
+            // markdown,
+            toolbar: false,
+
+            atLink: false,
+            toc: true,
+            tocm: true,
+            tocDropdown: false,
+            tocTitle: "Table of Contents For your lab!",
+
+            tex: true,
+            flowChart: true,
+            sequenceDiagram: true,
+            codeFold: true, // Doesn't do anything?
+            taskList: true,
+            emoji: true,
+
+            saveMarkdownToTextarea: true,
+
+            onresize: function () {
+                $("html,body").css("overflow", "hidden");
+
+                this.preview.css({
+                    width: $(window).width(),
+                    height: $(window).height()
+                })
+
+                adjustProgressBarWidth()
+            },
+            fixCodeBlocks: function () {
+                adjustCodeBlocks(this);
+            },
+            onload: function () {
+                $("[type=\"file\"]").bind("change", function () {
+                    alert($(this).val());
+                    authorEditor.cm.replaceSelection($(this).val());
+                    console.log($(this).val(), authorEditor);
+                });
+
+                this.fullscreen();
+                this.previewing();
+
+                setPreviewWatchToolbar(this);
+
+                if (tool_type != "instructional-lab") {
+                    fixCustomPlugins(this);
+                }
+                setAssetLibraryPrefixUrl(asset_library_prefix_url);
+                //comms with UI
+                setParentUrl(LABS_BASE_URL);
+                establishCommsWithUI(this);
+                //let the UI know that the author-ide has loaded
+                requestToUI({ type: "frame_loaded" });
+            }
+        });
+    });
+</script>
+
+
+<script src="./01.1.Prework for cloud application development_files/bootstrap.bundle.min.js.download" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+    </script>
+
+</body></html>
