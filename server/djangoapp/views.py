@@ -51,7 +51,8 @@ def login_request(request):
 # Create a `logout_request` view to handle sign out request
 def logout_request(request):
     logout(request)
-    return redirect('djangoapp')
+    # return redirect('djangoapp/')
+    return render(request, 'djangoapp/user_login.html')
 
 # Create a `registration_request` view to handle sign up request
 def registration_request(request):
