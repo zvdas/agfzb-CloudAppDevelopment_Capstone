@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.timezone import now
 
-
 # Create your models here.
 
 # <HINT> Create a Car Make model `class CarMake(models.Model)`:
@@ -15,8 +14,9 @@ class CarMake(models.Model):
 
     # Create a toString method for object string representation
     def __str__(self):
-        return "Car make: " + self.car_make + "," + \
-                "Car description: " + self.car_description
+        return + \
+            "Car make: " + self.car_make + "," + \
+            "Car description: " + self.car_description
 
 
 
@@ -29,16 +29,18 @@ class CarMake(models.Model):
 # - Any other fields you would like to include in car model
 # - __str__ method to print a car make object
 class CarModel(models.Model):
-    car_make = models.ForeignKey(CarMake, null=True, on_delete=models.CASCADE)
+    car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
     name = models.CharField(null=False, max_length=50)
     dealership = models.IntegerField(null=False)
-    car_type = models.CharField
+    car_type = models.CharField(max_length=10)
 
     # Create a toString method for object string representation
     def __str__(self):
-        return "Car make: " + self.car_make + ',' + \
-                "Name: " + self.name + ',' + \
-                "Dealer Id: " + self.dealership
+        return + \
+            "Car make: " + self.car_make + ',' + \
+            "Name: " + self.name + ',' + \
+            "Dealer Id: " + self.dealership + ',' + \
+            "Car Type" + self.car_type
 
 # <HINT> Create a plain Python class `CarDealer` to hold dealer data
 class CarDealer(models.Model):
@@ -53,14 +55,15 @@ class CarDealer(models.Model):
 
     # Create a toString method for object string representation
     def __str__(self):
-        return "name: " +  self.name + "," + \
-                "dealership: " +  self.dealership + "," + \
-                "review: " +  self.review + "," + \
-                "purchase: " +  self.purchase + "," + \
-                "purchase_date: " +  self.purchase_date + "," + \
-                "car_make: " +  self.car_make + "," + \
-                "car_model: " +  self.car_model + "," + \
-                "car_year: " +  self.car_year
+        return + \
+            "name: " +  self.name + "," + \
+            "dealership: " +  self.dealership + "," + \
+            "review: " +  self.review + "," + \
+            "purchase: " +  self.purchase + "," + \
+            "purchase_date: " +  self.purchase_date + "," + \
+            "car_make: " +  self.car_make + "," + \
+            "car_model: " +  self.car_model + "," + \
+            "car_year: " +  self.car_year
 
 # <HINT> Create a plain Python class `DealerReview` to hold review data
 class DealerReview(models.Model):
@@ -76,12 +79,13 @@ class DealerReview(models.Model):
 
     # Create a toString method for object string representation
     def __str__(self):
-        return "city: " + self.city + "," + \
-                "state: " + self.state + "," + \
-                "st: " + self.st + "," + \
-                "address: " + self.address + "," + \
-                "zip: " + self.zip + "," + \
-                "lat: " + self.lat + "," + \
-                "long: " + self.long + "," + \
-                "short_name: " + self.short_name + "," + \
-                "full_name: " + self.full_name
+        return + \
+            "city: " + self.city + "," + \
+            "state: " + self.state + "," + \
+            "st: " + self.st + "," + \
+            "address: " + self.address + "," + \
+            "zip: " + self.zip + "," + \
+            "lat: " + self.lat + "," + \
+            "long: " + self.long + "," + \
+            "short_name: " + self.short_name + "," + \
+            "full_name: " + self.full_name
