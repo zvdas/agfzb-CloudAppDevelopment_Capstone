@@ -33,6 +33,7 @@ class CarModel(models.Model):
     name = models.CharField(null=False, max_length=50)
     dealership = models.IntegerField(null=False)
     car_type = models.CharField(max_length=10)
+    year = models.DateField()
 
     # Create a toString method for object string representation
     def __str__(self):
@@ -40,7 +41,8 @@ class CarModel(models.Model):
             "Car make: " + self.car_make + ',' + \
             "Name: " + self.name + ',' + \
             "Dealer Id: " + self.dealership + ',' + \
-            "Car Type" + self.car_type
+            "Car Type" + self.car_type + ',' + \
+            "Year" + self.year
 
 # <HINT> Create a plain Python class `CarDealer` to hold dealer data
 class CarDealer(models.Model):
