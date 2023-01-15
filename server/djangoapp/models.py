@@ -52,7 +52,7 @@ class CarModel(models.Model):
     # Create a toString method for object string representation
     def __str__(self):
         return \
-            "Car make: " + self.car_make + ',' + \
+            "Car make: " + str(self.car_make) + ',' + \
             "Name: " + self.name + ',' + \
             "Dealer Id: " + str(self.dealership) + ',' + \
             "Car Type" + self.car_type + ',' + \
