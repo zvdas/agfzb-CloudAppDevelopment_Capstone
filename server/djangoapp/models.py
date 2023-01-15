@@ -14,7 +14,7 @@ class CarMake(models.Model):
 
     # Create a toString method for object string representation
     def __str__(self):
-        return + \
+        return \
             "Car make: " + self.car_make + "," + \
             "Car description: " + self.car_description
 
@@ -37,7 +37,7 @@ class CarMake(models.Model):
 
     # Create a toString method for object string representation
     # def __str__(self):
-    #     return + \
+    #     return \
     #         "Car make: " + self.car_make + ',' + \
     #         "Name: " + self.name + ',' + \
     #         "Dealer Id: " + self.dealership + ',' + \
@@ -57,7 +57,7 @@ class CarMake(models.Model):
 
     # Create a toString method for object string representation
     # def __str__(self):
-    #     return + \
+    #     return \
     #         "name: " +  self.name + "," + \
     #         "dealership: " +  self.dealership + "," + \
     #         "review: " +  self.review + "," + \
@@ -81,7 +81,7 @@ class CarMake(models.Model):
 
     # Create a toString method for object string representation
     # def __str__(self):
-    #     return + \
+    #     return \
     #         "city: " + self.city + "," + \
     #         "state: " + self.state + "," + \
     #         "st: " + self.st + "," + \
