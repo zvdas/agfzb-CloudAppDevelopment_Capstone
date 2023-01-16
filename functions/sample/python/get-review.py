@@ -1,6 +1,4 @@
-from cloudant import Cloudant
-
-def main(dict):
+# from cloudant import Cloudant
 from cloudant.client import Cloudant
 
 def main(dict):
