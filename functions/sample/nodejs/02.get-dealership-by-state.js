@@ -9,7 +9,7 @@ function main(params) {
     });
     cloudant.setServiceUrl(params.COUCH_URL);
 
-    return getAllRecords(cloudant, "dealerships", "state");
+    return getMatchingRecords(cloudant, "dealerships", params.SELECTOR);
 }
 
  /*
@@ -27,4 +27,11 @@ function getMatchingRecords(cloudant, dbname, selector) {
                     reject({ err: err });
                 });
          })
+}
+
+
+{
+    "IAM_API_KEY": "vIu9HaKiRhjDxioRa24NhIKdxETRuWRJDhP8_fU9FWfc",
+    "COUCH_URL": "https://b65d1bed-d060-4cb3-91b4-ba3cbb0b7e16-bluemix.cloudantnosqldb.appdomain.cloud",
+    "SELECTOR": {"STATE": "California"}
 }
