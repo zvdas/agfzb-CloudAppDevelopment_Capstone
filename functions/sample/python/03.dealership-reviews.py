@@ -14,7 +14,7 @@ def main(dict):
     client = Cloudant.iam(account_name=dict['ACCOUNT_NAME'], api_key=dict['API_KEY'], connect=True)
     
     selector = {'dealership': {'$eq': dict['DEALERSHIP']}}
-    return client['reviews'].get_query_result(selector)
+    return {"dealership_reviews": [x for x in client['reviews'].get_query_result(selector)]}
 
 
 {
