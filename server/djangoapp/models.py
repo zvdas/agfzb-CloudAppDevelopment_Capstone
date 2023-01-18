@@ -85,26 +85,29 @@ class CarDealer:
         return "Dealer name: " + self.full_name
 
 # <HINT> Create a plain Python class `DealerReview` to hold review data
-# class DealerReview(models.Model):
-#     city =  models.CharField(max_length=20)
-#     state =  models.CharField(max_length=20)
-#     st =  models.CharField(max_length=5)
-#     address =  models.TextField()
-#     zip =  models.CharField(max_length=6)
-#     lat =  models.FloatField()
-#     long =  models.FloatField()
-#     short_name =  models.CharField(max_length=20)
-#     full_name =  models.CharField(max_length=20)
+class DealerReview:
 
-    # Create a toString method for object string representation
-    # def __str__(self):
-    #     return \
-    #         "city: " + self.city + "," + \
-    #         "state: " + self.state + "," + \
-    #         "st: " + self.st + "," + \
-    #         "address: " + self.address + "," + \
-    #         "zip: " + self.zip + "," + \
-    #         "lat: " + self.lat + "," + \
-    #         "long: " + self.long + "," + \
-    #         "short_name: " + self.short_name + "," + \
-    #         "full_name: " + self.full_name
+    def __init__(id, dealership, name, purchase, review, purchase_date, car_make, car_model, car_year, sentiment):
+        # Review id
+        self.id = id
+        # Dealership id
+        self.dealership = dealership
+        # Reviewer name
+        self.name = name
+        # Dealer purchase
+        self.purchase = purchase
+        # Dealer review
+        self.review = review
+        # Dealer purchase date
+        self.purchase_date =  purchase_date
+        # Dealer car make
+        self.car_make = car_make
+        # Dealer car model
+        self.car_model = car_model
+        # Dealer car year
+        self.car_year = car_year
+        # Review sentiment
+        self.sentiment = sentiment
+    
+    def __str__(self):
+        return "Dealer review: " + self.review
