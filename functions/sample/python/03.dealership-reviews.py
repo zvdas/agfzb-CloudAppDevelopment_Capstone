@@ -16,9 +16,10 @@ def main(dict):
     selector = {'dealership': {'$eq': dict['DEALERSHIP']}}
     return {"dealership_reviews": [x for x in client['reviews'].get_query_result(selector)]}
 
-
+/*
 {
     "ACCOUNT_NAME": "b65d1bed-d060-4cb3-91b4-ba3cbb0b7e16-bluemix",
     "API_KEY": "vIu9HaKiRhjDxioRa24NhIKdxETRuWRJDhP8_fU9FWfc",
     "DEALERSHIP": 15
 }
+*/
