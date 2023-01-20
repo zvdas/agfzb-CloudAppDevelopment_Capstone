@@ -1,12 +1,13 @@
 # python 3.9
 from ibmcloudant.cloudant_v1 import CloudantV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+from ibmcloudant.cloudant_v1 import Document, CloudantV1
 
 def main(dict):
     authenticator = IAMAuthenticator(dict['API_KEY'])
     service = CloudantV1(authenticator=authenticator)
     service.set_service_url(dict['COUCH_URL'])
-    products_doc = Document(
+    reviews_doc = Document(
         name = dict['name'],
         dealership = dict['dealership'],
         review = dict['review'],
