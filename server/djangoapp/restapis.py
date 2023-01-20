@@ -78,7 +78,8 @@ def get_dealers_by_state(url, state):
 # - Call get_request() with specified arguments
 # - Parse JSON results into a DealerView object list
 def get_dealer_reviews_from_cf(url, dealerId):
-    json_result = get_request(url, dealerId = dealer_id)
+    json_result = get_request(url,dealerId)
+    print("url: ",url," id: ",dealerId)
     if json_result:
         review_object = [
             DealerReview(id=x['id'], car_make=x['car_make'], car_model=x['car_model'], car_year=x['car_year'], 
