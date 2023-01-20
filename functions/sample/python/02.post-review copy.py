@@ -1,7 +1,6 @@
 # python 3.9
-from ibmcloudant.cloudant_v1 import CloudantV1
-from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibmcloudant.cloudant_v1 import Document, CloudantV1
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 
 def main(dict):
     authenticator = IAMAuthenticator(dict['API_KEY'])
