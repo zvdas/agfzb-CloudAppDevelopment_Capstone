@@ -33,6 +33,6 @@ function getMatchingRecords(cloudant, dbname, selector) {
 {
     "IAM_API_KEY": "vIu9HaKiRhjDxioRa24NhIKdxETRuWRJDhP8_fU9FWfc",
     "COUCH_URL": "https://b65d1bed-d060-4cb3-91b4-ba3cbb0b7e16-bluemix.cloudantnosqldb.appdomain.cloud",
-    "SELECTOR": {"STATE": "California"}
+    "SELECTOR": {"state": "California"}
 }
 */
