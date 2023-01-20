@@ -6,7 +6,7 @@ def main(dict):
     authenticator = IAMAuthenticator(dict['API_KEY'])
     service = CloudantV1(authenticator=authenticator)
     service.set_service_url(dict['COUCH_URL'])
-    response = service.get_document(db='reviews', doc_dealership=dict['DEALERSHIP']).get_result()
+    response = service.post_find(db='reviews', selector={'dealership':{'$eq':dict['DEALERSHIP']}}).get_result()
     return response
 
 
