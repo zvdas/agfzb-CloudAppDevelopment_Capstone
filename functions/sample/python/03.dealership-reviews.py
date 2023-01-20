@@ -1,12 +1,16 @@
-#
-#
-# main() will be run when you invoke this action
-#
-# @param Cloud Functions actions accept a single parameter, which must be a JSON object.
-#
-# @return The output of this action, which must be a JSON object.
-#
-#
+# python 3.9
+from ibmcloudant.cloudant_v1 import CloudantV1
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+
+def main(dict):
+    authenticator = IAMAuthenticator(dict['API_KEY'])
+    service = CloudantV1(authenticator=authenticator)
+    service.set_service_url(dict['COUCH_URL'])
+    response = service.get_document(db='reviews', doc_dealership=dict['DEALERSHIP']).get_result()
+    return response
+
+
+# python 3.7
 # from cloudant import Cloudant
 from cloudant.client import Cloudant
 
