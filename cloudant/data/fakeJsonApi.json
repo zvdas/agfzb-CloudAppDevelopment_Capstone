@@ -1,0 +1,465 @@
+{
+  "get_dealer": {
+    "result": [
+      {
+        "doc": {
+          "_id": "abc375c810b1dab4b89a2eb5c9d110b2",
+          "_rev": "1-34e7ebd07643af43db578a46ee1d6365",
+          "address": "3 Nova Court",
+          "city": "El Paso",
+          "full_name": "Holdlamis Car Dealership",
+          "id": 1,
+          "lat": 31.6948,
+          "long": -106.3,
+          "short_name": "Holdlamis",
+          "st": "TX",
+          "state": "Texas",
+          "zip": "88563"
+        },
+        "id": "abc375c810b1dab4b89a2eb5c9d110b2",
+        "key": "abc375c810b1dab4b89a2eb5c9d110b2",
+        "value": {
+          "rev": "1-34e7ebd07643af43db578a46ee1d6365"
+        }
+      },
+      {
+        "doc": {
+          "_id": "abc375c810b1dab4b89a2eb5c9d11a22",
+          "_rev": "1-d1778a396ca8cb0ef2966a9854eb93ee",
+          "address": "6337 Butternut Crossing",
+          "city": "Minneapolis",
+          "full_name": "Temp Car Dealership",
+          "id": 2,
+          "lat": 44.9762,
+          "long": -93.2759,
+          "short_name": "Temp",
+          "st": "MN",
+          "state": "Minnesota",
+          "zip": "55402"
+        },
+        "id": "abc375c810b1dab4b89a2eb5c9d11a22",
+        "key": "abc375c810b1dab4b89a2eb5c9d11a22",
+        "value": {
+          "rev": "1-d1778a396ca8cb0ef2966a9854eb93ee"
+        }
+      },
+      {
+        "doc": {
+          "_id": "abc375c810b1dab4b89a2eb5c9d12000",
+          "_rev": "1-cc5d5c13aa879d1cef8253dfa1dce77d",
+          "address": "9477 Twin Pines Center",
+          "city": "Birmingham",
+          "full_name": "Sub-Ex Car Dealership",
+          "id": 3,
+          "lat": 33.5446,
+          "long": -86.9292,
+          "short_name": "Sub-Ex",
+          "st": "AL",
+          "state": "Alabama",
+          "zip": "35285"
+        },
+        "id": "abc375c810b1dab4b89a2eb5c9d12000",
+        "key": "abc375c810b1dab4b89a2eb5c9d12000",
+        "value": {
+          "rev": "1-cc5d5c13aa879d1cef8253dfa1dce77d"
+        }
+      },
+      {
+        "doc": {
+          "_id": "abc375c810b1dab4b89a2eb5c9d12b67",
+          "_rev": "1-a79013b42c83451d49e7e3aba4a575e3",
+          "address": "85800 Hazelcrest Circle",
+          "city": "Dallas",
+          "full_name": "Solarbreeze Car Dealership",
+          "id": 4,
+          "lat": 32.6722,
+          "long": -96.7774,
+          "short_name": "Solarbreeze",
+          "st": "TX",
+          "state": "Texas",
+          "zip": "75241"
+        },
+        "id": "abc375c810b1dab4b89a2eb5c9d12b67",
+        "key": "abc375c810b1dab4b89a2eb5c9d12b67",
+        "value": {
+          "rev": "1-a79013b42c83451d49e7e3aba4a575e3"
+        }
+      },
+      {
+        "doc": {
+          "_id": "abc375c810b1dab4b89a2eb5c9d12ece",
+          "_rev": "1-c16dcd97a91588c9866814f61ea72751",
+          "address": "93 Golf Course Pass",
+          "city": "Baltimore",
+          "full_name": "Regrant Car Dealership",
+          "id": 5,
+          "lat": 39.2847,
+          "long": -76.6205,
+          "short_name": "Regrant",
+          "st": "MD",
+          "state": "Maryland",
+          "zip": "21203"
+        },
+        "id": "abc375c810b1dab4b89a2eb5c9d12ece",
+        "key": "abc375c810b1dab4b89a2eb5c9d12ece",
+        "value": {
+          "rev": "1-c16dcd97a91588c9866814f61ea72751"
+        }
+      },
+      {
+        "doc": {
+          "_id": "abc375c810b1dab4b89a2eb5c9d12f72",
+          "_rev": "1-e37424d3be7785cbdbc4ed12ec29b343",
+          "address": "2 Burrows Hill",
+          "city": "Wilkes Barre",
+          "full_name": "Stronghold Car Dealership",
+          "id": 6,
+          "lat": 41.2722,
+          "long": -75.8801,
+          "short_name": "Stronghold",
+          "st": "PA",
+          "state": "Pennsylvania",
+          "zip": "18763"
+        },
+        "id": "abc375c810b1dab4b89a2eb5c9d12f72",
+        "key": "abc375c810b1dab4b89a2eb5c9d12f72",
+        "value": {
+          "rev": "1-e37424d3be7785cbdbc4ed12ec29b343"
+        }
+      },
+      {
+        "doc": {
+          "_id": "abc375c810b1dab4b89a2eb5c9d13805",
+          "_rev": "1-96db320a9c736d2e08e8b1bf873d0e04",
+          "address": "9 Cambridge Park",
+          "city": "Pueblo",
+          "full_name": "Job Car Dealership",
+          "id": 7,
+          "lat": 38.1286,
+          "long": -104.5523,
+          "short_name": "Job",
+          "st": "CO",
+          "state": "Colorado",
+          "zip": "81010"
+        },
+        "id": "abc375c810b1dab4b89a2eb5c9d13805",
+        "key": "abc375c810b1dab4b89a2eb5c9d13805",
+        "value": {
+          "rev": "1-96db320a9c736d2e08e8b1bf873d0e04"
+        }
+      },
+      {
+        "doc": {
+          "_id": "abc375c810b1dab4b89a2eb5c9d13af9",
+          "_rev": "1-4e4889794e42a9e092c1442118889232",
+          "address": "288 Larry Place",
+          "city": "Topeka",
+          "full_name": "Bytecard Car Dealership",
+          "id": 8,
+          "lat": 39.0429,
+          "long": -95.7697,
+          "short_name": "Bytecard",
+          "st": "KS",
+          "state": "Kansas",
+          "zip": "66642"
+        },
+        "id": "abc375c810b1dab4b89a2eb5c9d13af9",
+        "key": "abc375c810b1dab4b89a2eb5c9d13af9",
+        "value": {
+          "rev": "1-4e4889794e42a9e092c1442118889232"
+        }
+      },
+      {
+        "doc": {
+          "_id": "abc375c810b1dab4b89a2eb5c9d13fce",
+          "_rev": "1-63f1a1984f40f1de1eabceaec90f7fb6",
+          "address": "253 Hanson Junction",
+          "city": "Dallas",
+          "full_name": "Job Car Dealership",
+          "id": 9,
+          "lat": 32.7086,
+          "long": -96.7955,
+          "short_name": "Job",
+          "st": "TX",
+          "state": "Texas",
+          "zip": "75216"
+        },
+        "id": "abc375c810b1dab4b89a2eb5c9d13fce",
+        "key": "abc375c810b1dab4b89a2eb5c9d13fce",
+        "value": {
+          "rev": "1-63f1a1984f40f1de1eabceaec90f7fb6"
+        }
+      },
+      {
+        "doc": {
+          "_id": "abc375c810b1dab4b89a2eb5c9d1427d",
+          "_rev": "1-1510e7ca88f225bef573a98f9cb45452",
+          "address": "108 Memorial Pass",
+          "city": "Washington",
+          "full_name": "Alphazap Car Dealership",
+          "id": 10,
+          "lat": 38.9067,
+          "long": -77.0312,
+          "short_name": "Alphazap",
+          "st": "DC",
+          "state": "District of Columbia",
+          "zip": "20005"
+        },
+        "id": "abc375c810b1dab4b89a2eb5c9d1427d",
+        "key": "abc375c810b1dab4b89a2eb5c9d1427d",
+        "value": {
+          "rev": "1-1510e7ca88f225bef573a98f9cb45452"
+        }
+      }
+    ]
+  },
+  "get_review": {
+    "offset": 0,
+    "rows": [
+      {
+        "doc": {
+          "_id": "21b0b3e35099ea3189a1ad345252b175",
+          "_rev": "1-6d3a316e140863cdb147048888d26051",
+          "car_make": "Audi",
+          "car_model": "A6",
+          "car_year": 2010,
+          "dealership": 15,
+          "id": 1,
+          "name": "Berkly Shepley",
+          "purchase": true,
+          "purchase_date": "07/11/2020",
+          "review": "Total grid-enabled service-desk"
+        },
+        "id": "21b0b3e35099ea3189a1ad345252b175",
+        "key": "21b0b3e35099ea3189a1ad345252b175",
+        "value": {
+          "rev": "1-6d3a316e140863cdb147048888d26051"
+        }
+      },
+      {
+        "doc": {
+          "_id": "21b0b3e35099ea3189a1ad345252b7d2",
+          "_rev": "1-0cbc084ce570374a1d0c2653ceb254ad",
+          "car_make": "Pontiac",
+          "car_model": "Firebird",
+          "car_year": 1995,
+          "dealership": 23,
+          "id": 2,
+          "name": "Gwenora Zettoi",
+          "purchase": true,
+          "purchase_date": "09/17/2020",
+          "review": "Future-proofed foreground capability"
+        },
+        "id": "21b0b3e35099ea3189a1ad345252b7d2",
+        "key": "21b0b3e35099ea3189a1ad345252b7d2",
+        "value": {
+          "rev": "1-0cbc084ce570374a1d0c2653ceb254ad"
+        }
+      },
+      {
+        "doc": {
+          "_id": "21b0b3e35099ea3189a1ad345252c4f2",
+          "_rev": "1-278e31d48be2f5abc7c9b542cff00208",
+          "car_make": "Mazda",
+          "car_model": "MX-5",
+          "car_year": 2003,
+          "dealership": 29,
+          "id": 3,
+          "name": "Lion Reames",
+          "purchase": true,
+          "purchase_date": "10/20/2020",
+          "review": "Expanded global groupware"
+        },
+        "id": "21b0b3e35099ea3189a1ad345252c4f2",
+        "key": "21b0b3e35099ea3189a1ad345252c4f2",
+        "value": {
+          "rev": "1-278e31d48be2f5abc7c9b542cff00208"
+        }
+      },
+      {
+        "doc": {
+          "_id": "21b0b3e35099ea3189a1ad345252d08c",
+          "_rev": "1-1677bbc642e9673d151d56614ad81963",
+          "dealership": 13,
+          "id": 4,
+          "name": "Iorgos Colley",
+          "purchase": false,
+          "review": "Optional heuristic software"
+        },
+        "id": "21b0b3e35099ea3189a1ad345252d08c",
+        "key": "21b0b3e35099ea3189a1ad345252d08c",
+        "value": {
+          "rev": "1-1677bbc642e9673d151d56614ad81963"
+        }
+      },
+      {
+        "doc": {
+          "_id": "21b0b3e35099ea3189a1ad345252d53d",
+          "_rev": "1-7e446087190b20656bad81aeab9242b5",
+          "dealership": 46,
+          "id": 5,
+          "name": "Kissee Noirel",
+          "purchase": false,
+          "review": "Diverse client-server success"
+        },
+        "id": "21b0b3e35099ea3189a1ad345252d53d",
+        "key": "21b0b3e35099ea3189a1ad345252d53d",
+        "value": {
+          "rev": "1-7e446087190b20656bad81aeab9242b5"
+        }
+      },
+      {
+        "doc": {
+          "_id": "d58f23ad9630f96c1f69d52d7aeca885",
+          "_rev": "1-a907ac5cb079120f4a88272272ee7bea",
+          "car_make": "Audi",
+          "car_model": "A6",
+          "car_year": 2010,
+          "dealership": 15,
+          "name": "John Doe",
+          "purchase": true,
+          "purchase_date": "07/11/2020",
+          "review": "Total grid-enabled service-desk"
+        },
+        "id": "d58f23ad9630f96c1f69d52d7aeca885",
+        "key": "d58f23ad9630f96c1f69d52d7aeca885",
+        "value": {
+          "rev": "1-a907ac5cb079120f4a88272272ee7bea"
+        }
+      }
+    ],
+    "total_rows": 7
+  },
+  "get_dealership_by_state": {
+    "result": [
+      {
+        "_id": "abc375c810b1dab4b89a2eb5c9d161fb",
+        "_rev": "1-7828b3ead20b34e43a00d8305fee6cd2",
+        "address": "2109 Scott Parkway",
+        "city": "San Francisco",
+        "full_name": "It Car Dealership",
+        "id": 14,
+        "lat": 37.7848,
+        "long": -122.7278,
+        "short_name": "It",
+        "st": "CA",
+        "state": "California",
+        "zip": "94147"
+      },
+      {
+        "_id": "abc375c810b1dab4b89a2eb5c9d16d53",
+        "_rev": "1-ee4a7286b4515e5c4ef7fb152c6dc37d",
+        "address": "7670 American Ash Drive",
+        "city": "San Jose",
+        "full_name": "Home Ing Car Dealership",
+        "id": 17,
+        "lat": 37.2602,
+        "long": -121.7709,
+        "short_name": "Home Ing",
+        "st": "CA",
+        "state": "California",
+        "zip": "95138"
+      },
+      {
+        "_id": "abc375c810b1dab4b89a2eb5c9d17bc9",
+        "_rev": "1-2c1ccca9532d409320038cb83d4f80d6",
+        "address": "4 Pearson Avenue",
+        "city": "Whittier",
+        "full_name": "Bitchip Car Dealership",
+        "id": 18,
+        "lat": 33.9413,
+        "long": -118.0356,
+        "short_name": "Bitchip",
+        "st": "CA",
+        "state": "California",
+        "zip": "90605"
+      },
+      {
+        "_id": "abc375c810b1dab4b89a2eb5c9d18f9c",
+        "_rev": "1-3f78374abc08662f7f9bde1cc4b726a6",
+        "address": "046 Mockingbird Junction",
+        "city": "San Francisco",
+        "full_name": "Andalax Car Dealership",
+        "id": 21,
+        "lat": 37.7848,
+        "long": -122.7278,
+        "short_name": "Andalax",
+        "st": "CA",
+        "state": "California",
+        "zip": "94154"
+      },
+      {
+        "_id": "abc375c810b1dab4b89a2eb5c9d1bf18",
+        "_rev": "1-a017eedc4af988246172b38580dd1bc5",
+        "address": "9 Harper Circle",
+        "city": "San Francisco",
+        "full_name": "Fix San Car Dealership",
+        "id": 29,
+        "lat": 37.7509,
+        "long": -122.4153,
+        "short_name": "Fix San",
+        "st": "CA",
+        "state": "California",
+        "zip": "94110"
+      },
+      {
+        "_id": "abc375c810b1dab4b89a2eb5c9d20077",
+        "_rev": "1-aad3e04d9c8755694ad22d3bb6915553",
+        "address": "990 Raven Road",
+        "city": "Fresno",
+        "full_name": "Stronghold Car Dealership",
+        "id": 39,
+        "lat": 36.7464,
+        "long": -119.6397,
+        "short_name": "Stronghold",
+        "st": "CA",
+        "state": "California",
+        "zip": "93740"
+      }
+    ]
+  },
+  "get_review_by_dealership": {
+    "bookmark": "g1AAAABweJzLYWBgYMpgSmHgKy5JLCrJTq2MT8lPzkzJBYorpJhapBkZJ6ZYmhkbpFmaJRummVmmmBqlmCemJidaWJiC9HHA9BGlIwsAuOMfAQ",
+    "docs": [
+      {
+        "_id": "1e37cac41995ed3a0fd321ec9d46f5a5",
+        "_rev": "1-a907ac5cb079120f4a88272272ee7bea",
+        "car_make": "Audi",
+        "car_model": "A6",
+        "car_year": 2010,
+        "dealership": 15,
+        "name": "John Doe",
+        "purchase": true,
+        "purchase_date": "07/11/2020",
+        "review": "Total grid-enabled service-desk"
+      },
+      {
+        "_id": "21b0b3e35099ea3189a1ad345252b175",
+        "_rev": "1-6d3a316e140863cdb147048888d26051",
+        "car_make": "Audi",
+        "car_model": "A6",
+        "car_year": 2010,
+        "dealership": 15,
+        "id": 1,
+        "name": "Berkly Shepley",
+        "purchase": true,
+        "purchase_date": "07/11/2020",
+        "review": "Total grid-enabled service-desk"
+      },
+      {
+        "_id": "d58f23ad9630f96c1f69d52d7aeca885",
+        "_rev": "1-a907ac5cb079120f4a88272272ee7bea",
+        "car_make": "Audi",
+        "car_model": "A6",
+        "car_year": 2010,
+        "dealership": 15,
+        "name": "John Doe",
+        "purchase": true,
+        "purchase_date": "07/11/2020",
+        "review": "Total grid-enabled service-desk"
+      }
+    ],
+    "warning": "No matching index found, create an index to optimize query time."
+  },
+  "post_review": {}
+}

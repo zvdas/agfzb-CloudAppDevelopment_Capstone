@@ -19,7 +19,6 @@ class CarMake(models.Model):
             "Car description: " + self.car_description
 
 
-
 # <HINT> Create a Car Model model `class CarModel(models.Model):`:
 # - Many-To-One relationship to Car Make model (One Car Make has many Car Models, using ForeignKey field)
 # - Name
@@ -58,6 +57,7 @@ class CarModel(models.Model):
             "Car Type" + self.car_type + ',' + \
             "Year" + str(self.year)
 
+
 # <HINT> Create a plain Python class `CarDealer` to hold dealer data
 class CarDealer:
 
@@ -86,30 +86,32 @@ class CarDealer:
     def __str__(self):
         return "Dealer name: " + self.full_name
 
+
 # <HINT> Create a plain Python class `DealerReview` to hold review data
 class DealerReview:
 
-    def __init__(self, id, dealership, name, purchase, review, purchase_date, car_make, car_model, car_year, sentiment):
-        # Review id
-        self.id = id
+    # def __init__(self, car_make, car_model, car_year, dealership, id, name, purchase, purchase_date, review):#, sentiment):
+    def __init__(self, dealership, name, purchase, review):
+        # Dealer car make
+        # self.car_make = car_make
+        # Dealer car model
+        # self.car_model = car_model
+        # Dealer car year
+        # self.car_year = car_year
         # Dealership id
         self.dealership = dealership
+        # Review id
+        # self.id = id
         # Reviewer name
         self.name = name
         # Dealer purchase
         self.purchase = purchase
+        # Dealer purchase date
+        # self.purchase_date =  purchase_date
         # Dealer review
         self.review = review
-        # Dealer purchase date
-        self.purchase_date =  purchase_date
-        # Dealer car make
-        self.car_make = car_make
-        # Dealer car model
-        self.car_model = car_model
-        # Dealer car year
-        self.car_year = car_year
         # Review sentiment
-        self.sentiment = sentiment
+        # self.sentiment = sentiment
     
     def __str__(self):
         return "Dealer review: " + self.review

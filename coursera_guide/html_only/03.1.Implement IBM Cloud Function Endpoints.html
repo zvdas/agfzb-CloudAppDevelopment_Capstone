@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="keywords" content="Editor.md,editor,Markdown Editor,Markdown" />
+    <meta name="description" content="Skills Network Author IDE" />
+    <title>Skills Network Editor</title>
+    <link rel="stylesheet" href="editormd/examples/css/style.css?version=2.0.9" />
+    <link rel="stylesheet" href="editormd/css/editormd.css?version=2.0.9" />
+    <link rel="stylesheet" href="public/css/custom.css?version=2.0.9" />
+    <link rel="shortcut icon" href="public/images/SN_favicon.png" type="image/x-icon" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="public/js/comms.js?version=2.0.9"></script>
+    <script src="//unpkg.com/alpinejs"></script>
+</head>
+
+<body>
+    <div id="layout">
+    <div id="test-editormd">
+        <textarea style="display:none;">::page{title&#x3D;&quot;Implement IBM Cloud Function Endpoints&quot;}
+
+&lt;img src&#x3D;&quot;https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/images/IDSN-logo.png&quot; width&#x3D;&quot;200&quot; alt&#x3D;&quot;cognitiveclass.ai logo&quot;&gt;
+
+##
+
+**Estimated time needed:** 90 minutes
+
+Congratulations! You are one step closer to finishing the capstone project. You created a web application and added user authentication using the Django framework in the previous modules. Additionally, you set up continuous integration so when you commit code to your repo, it automatically kicks off a new build of your web application. Take a pause and pat yourself on the back. However, we are not done yet! In this module, you are asked to create the backend services for your application.
+
+The Django application will talk to the database using backend services hosted on IBM Cloud. You are asked to create these services in Python and JavaScript. You will write these services on the IBM Cloud Functions serverless platform. Finally, you will add an API gateway in front of the functions. 
+
+::page{title&#x3D;&quot;1. Load data into the database&quot;}
+
+You have been provided the dealership data as a JSON file &#x60;./data/dealerships.json&#x60;. Your first task is to upload this data into your Cloudant database. There are multiple ways to do this programmitcally. You will need the your service credentials. 
+
+&gt;&gt;NOTE: Kindly ensure that your Cloudant Instance is created using the **IAM authentication** method only and not the IAM and Legacy Authentication method. To check the authentication method of your Cloudant instance, click Manage:
+
+![](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_3_backend_services/images/IAM.PNG)
+
+1. Navigate to the resources page - https://cloud.ibm.com/resources.
+2. Click on the Cloudant service. If you don&#x27;t have one already, create one here - https://cloud.ibm.com/catalog/services/cloudant.
+3. Click on &#x60;Service credentials&#x60; on the left bar.
+4. Click &#x60;New credential&#x60;. You can leave the default options on the popup.
+5. Expand the newly created credentials and take note of the &#x60;apikey&#x60; and the &#x60;url&#x60;.
+
+6. Before you import the data, create two databases using the Cloudant UI:
+
+- Click &#x60;Launch Dashboard&#x60; on the Cloudant UI and then Click &#x60;Create Database&#x60;
+- Create one database called &#x60;dealerships&#x60; with &#x60;Non-partitioned&#x60;
+- Create another database called &#x60;reviews&#x60; with &#x60;Non-partitioned&#x60;
+
+Then in Theia terminal, you can use the npm package &#x60;couchimport&#x60; to load data into your database. 
+Note you may need to install &#x60;couchimport&#x60; first:
+
+&#x60;&#x60;&#x60;
+npm install -g couchimport
+
+&#x60;&#x60;&#x60;
+
+7. Set the following environment variables using the credentials in the newly created Service credentials:
+
+&#x60;&#x60;&#x60;
+export IAM_API_KEY&#x3D;&quot;REPLACED IT WITH GENERATED &#x60;apikey&#x60;&quot;
+&#x60;&#x60;&#x60;
+
+&#x60;&#x60;&#x60;
+export COUCH_URL&#x3D;&quot;REPLACED IT WITH GENERATED &#x60;url&#x60;&quot;
+&#x60;&#x60;&#x60;
+
+These two environment variables will be used for the following &#x60;couchimport&#x60; commands
+
+8. In your forked Github repo folder, change into the &#x60;data&#x60; folder
+ 
+
+&#x60;&#x60;&#x60;
+cd cloudant/data
+&#x60;&#x60;&#x60;
+
+and use the following command to import the JSON data into the database.
+
+   
+
+- First import dealerships data into &#x60;dealerships&#x60; database
+
+&#x60;&#x60;&#x60;
+cat ./dealerships.json | couchimport --type &quot;json&quot; --jsonpath &quot;dealerships.*&quot; --database dealerships
+&#x60;&#x60;&#x60;
+
+9. Do the same for existing reviews.
+
+&#x60;&#x60;&#x60;
+cat ./reviews.json | couchimport --type &quot;json&quot; --jsonpath &quot;reviews.*&quot; --database reviews
+&#x60;&#x60;&#x60;
+
+You should now have two databases, &#x60;dealerships&#x60; and &#x60;reviews&#x60; with sample data in each database.
+
+![](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_3_backend_services/images/cloudant.png)
+
+::page{title&#x3D;&quot;2. Working with Cloudant in IBM Cloud Functions&quot;}
+
+You are asked to use IBM Cloud Functions serverless platform to create backend services that the Django application will make use of. The &#x60;agfzb-CloudAppDevelopment_Capstone/functions/sample&#x60; folder has sample functions for both JavaScript and Python that you can use as basis for your code. We have provided the bare minimum error handling. All the files assume that you have bound the following properties to the individual functions or the package itself:
+
+&#x60;&#x60;&#x60;
+{
+    &quot;COUCH_URL&quot;: &quot;&quot;,
+    &quot;IAM_API_KEY&quot;: &quot;&quot;,
+    &quot;COUCH_USERNAME&quot;: &quot;&quot;
+}
+&#x60;&#x60;&#x60;
+
+Let&#x27;s look at each function in more detail.
+
+1. Sample Python function
+   
+   The code uses the [python-cloudant](https://python-cloudant.readthedocs.io/en/latest/index.html?utm_medium&#x3D;Exinfluencer&amp;utm_source&#x3D;Exinfluencer&amp;utm_content&#x3D;000026UJ&amp;utm_term&#x3D;10006555&amp;utm_id&#x3D;NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMCD0321ENSkillsNetwork1046-2022-01-01) SDK to communicate with the IBM Cloudant service. If you are developing locally, you need to &#x60;pip install&#x60; the package using the provided &#x60;requirements.txt&#x60; file. The [python runtime](https://cloud.ibm.com/docs/openwhisk?utm_medium&#x3D;Exinfluencer&amp;utm_source&#x3D;Exinfluencer&amp;utm_content&#x3D;000026UJ&amp;utm_term&#x3D;10006555&amp;utm_id&#x3D;NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMCD0321ENSkillsNetwork1046-2022-01-01&amp;topic&#x3D;openwhisk-runtimes#python_packages) on IBM Cloud functions provides this package and you don&#x27;t have to install anything.
+
+    The &#x60;agfzb-CloudAppDevelopment_Capstone/functions/sample/python/main.py&#x60; file contains the function that returns the names of all databases. The following code authenticates with IBM Cloudant service using the username and api key.
+
+    &#x60;&#x60;&#x60;
+    client &#x3D; Cloudant.iam(
+                account_name&#x3D;dict[&quot;COUCH_USERNAME&quot;],
+                api_key&#x3D;dict[&quot;IAM_API_KEY&quot;],
+                connect&#x3D;True,
+            )
+    &#x60;&#x60;&#x60;
+
+    The following code retrieves all the databases:
+
+    &#x60;&#x60;&#x60;
+    return {&quot;dbs&quot;: client.all_dbs()}
+    &#x60;&#x60;&#x60;
+    The code needs to return a Python dictionary for it to be a valid IBM Cloud Python action.
+
+    The following is returned when this function is invoked:
+    &#x60;&#x60;&#x60;
+    {
+        &quot;dbs&quot;: [
+            &quot;dealerships&quot;,
+            &quot;reviews&quot;
+        ]
+    }
+    &#x60;&#x60;&#x60;
+
+1. Simple Node.js function that **does not work**
+
+    The node.js code uses the [cloudant](https://www.npmjs.com/package/@cloudant/cloudant) npm package to communicate with Cloudant service on IBM Cloud. If you are developing locally, you need to &#x60;npm install&#x60; the package using the provided &#x60;package.json&#x60; file. The [Node.js runtime](https://cloud.ibm.com/docs/openwhisk?utm_medium&#x3D;Exinfluencer&amp;utm_source&#x3D;Exinfluencer&amp;utm_content&#x3D;000026UJ&amp;utm_term&#x3D;10006555&amp;utm_id&#x3D;NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMCD0321ENSkillsNetwork1046-2022-01-01&amp;topic&#x3D;openwhisk-runtimes#javascript_packages) on IBM Cloud functions provides this package and you don&#x27;t have to install anything.
+    
+    A common problem that you will face running asynchronous code on serverless platform is that the server returns before the asynchronous function finishes. The file &#x60;agfzb-CloudAppDevelopment_Capstone/functions/sample/nodejs&#x60; contains code you might expect to work, **however when you run it, you will not get any results back**.
+
+    &#x60;&#x60;&#x60;
+    cloudant.db.list().then((body) &#x3D;&gt; {
+            body.forEach((db) &#x3D;&gt; {
+                dbList.push(db);
+            });
+        }).catch((err) &#x3D;&gt; { console.log(err); });
+    &#x60;&#x60;&#x60;
+
+    The reason being &#x60;cloudant.db.list()&#x60; method returns a promise and IBM Cloud Function does not wait for this promise to get resolved. It immediately returns an empty object to the caller.
+
+    The following is returned when this function is invoked:
+    &#x60;&#x60;&#x60;
+    {}
+    &#x60;&#x60;&#x60;
+
+2. Fix using promises
+
+    One way to fix this is have your serverless main function return a Promise instead of the result itself. The &#x60;agfzb-CloudAppDevelopment_Capstone/functions/sample/index-promise.js&#x60; file illustrates this example
+
+    &#x60;&#x60;&#x60;
+    function getDbs(cloudant) {
+        return new Promise((resolve, reject) &#x3D;&gt; {
+            cloudant.db.list()
+                .then(body &#x3D;&gt; {
+                    resolve({ dbs: body });
+                })
+                .catch(err &#x3D;&gt; {
+                    reject({ err: err });
+                });
+        });
+    }
+    &#x60;&#x60;&#x60;
+
+    The above function returns a promise that is resolved when the results come back or rejected if there is an error. The main function can now use this promise returning function as follows:
+
+    &#x60;&#x60;&#x60;
+    function main(params) {
+
+        const cloudant &#x3D; Cloudant({
+            url: params.COUCH_URL,
+            plugins: { iamauth: { iamApiKey: params.IAM_API_KEY } }
+        });
+
+        let dbListPromise &#x3D; getDbs(cloudant);
+        return dbListPromise;
+    }
+    &#x60;&#x60;&#x60;
+
+    The following is returned when this function is invoked:
+    &#x60;&#x60;&#x60;
+    {
+        &quot;dbs&quot;: [
+            &quot;dealerships&quot;,
+            &quot;reviews&quot;
+        ]
+    }
+    &#x60;&#x60;&#x60;
+
+3. Fix using async await
+   
+   You can also use the async await keywords that act as syntactic sugar and make promise driven code easier to read and write. The file &#x60;agfzb-CloudAppDevelopment_Capstone/functions/sample/index-async-await.js&#x60; has the code that also returns the database names, but uses async await keywords
+
+   &#x60;&#x60;&#x60;
+    async function main(params) {
+        const cloudant &#x3D; Cloudant({
+            url: params.COUCH_URL,
+            plugins: { iamauth: { iamApiKey: params.IAM_API_KEY } }
+        });
+    
+    
+        try {
+            let dbList &#x3D; await cloudant.db.list();
+            return { &quot;dbs&quot;: dbList };
+        } catch (error) {
+            return { error: error.description };
+        }
+    }
+   &#x60;&#x60;&#x60;
+   Notice the main function now has the keyword &#x60;async&#x60; in front of it and the &#x60;cloudant.db.list()&#x60; method that returns promise has the keyword &#x60;await&#x60; in front of it. This removes the need to write the &#x60;then&#x60; and &#x60;catch&#x60; clauses. The errors are handled using the regular &#x60;try&#x60; and &#x60;catch&#x60; clauses that you are already familiar with.
+
+   The following is returned when this function is invoked:
+    &#x60;&#x60;&#x60;
+    {
+        &quot;dbs&quot;: [
+            &quot;dealerships&quot;,
+            &quot;reviews&quot;
+        ]
+    }
+    &#x60;&#x60;&#x60;
+
+::page{title&#x3D;&quot;3. Create backend services&quot;}
+
+Now that you know how to create IBM Cloud Function actions in Node.js and Python that can use the Cloudant SDKs to return information, use the same framework to create the following endpoints:
+
+Please follow the instructions given [here](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_3_backend_services/4-instructional-labs-API-Changes.md.html) to create API Endpoint URL&#x27;s.
+
+1. Get all dealerships.
+
+- Language: Node.js
+- Endpoint: &#x60;/api/dealership&#x60; 
+- Method: GET
+- Parameters: None
+- Output: List of dealerships with details
+  
+    &#x60;&#x60;&#x60;
+    [
+        {
+            &quot;id&quot;: 1,
+            &quot;city&quot;: &quot;Worcester&quot;,
+            &quot;state&quot;: &quot;Massachusetts&quot;,
+            &quot;st&quot;: &quot;MA&quot;,
+            &quot;address&quot;: &quot;96 Mariners Cove Place&quot;,
+            &quot;zip&quot;: &quot;01654&quot;,
+            &quot;lat&quot;: 42.3648,
+            &quot;long&quot;: -71.8969
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;city&quot;: &quot;Topeka&quot;,
+            &quot;state&quot;: &quot;Kansas&quot;,
+            &quot;st&quot;: &quot;KS&quot;,
+            &quot;address&quot;: &quot;3 Schlimgen Street&quot;,
+            &quot;zip&quot;: &quot;66667&quot;,
+            &quot;lat&quot;: 39.0429,
+            &quot;long&quot;: -95.7697
+        }
+    ]
+    &#x60;&#x60;&#x60;
+
+Error:
+
+- 404: The database is empty
+- 500: Something went wrong on the server
+
+2. Get all dealerships for a given state. You can enhance the previous function to add this functionality.
+ 
+
+- Language: Node.js
+- Endpoint: &#x60;/api/dealership?state&#x3D;&quot;&quot;&#x60; 
+- Parameters:
+  - state: the abbreviated state name
+- Output: List of dealerships from the state. If the call was &#x60;/api/dealership?state&#x3D;&quot;California&quot;&#x60;, the output would be:
+  
+    &#x60;&#x60;&#x60;
+    [
+        {
+            &quot;id&quot;: 8,
+            &quot;city&quot;: &quot;San Jose&quot;,
+            &quot;state&quot;: &quot;California&quot;,
+            &quot;st&quot;: &quot;CA&quot;,
+            &quot;address&quot;: &quot;83 Reinke Hill&quot;,
+            &quot;zip&quot;: &quot;95173&quot;,
+            &quot;lat&quot;: 37.3352,
+            &quot;long&quot;: -121.8938
+        },
+        {
+            &quot;id&quot;: 17,
+            &quot;city&quot;: &quot;Inglewood&quot;,
+            &quot;state&quot;: &quot;California&quot;,
+            &quot;st&quot;: &quot;CA&quot;,
+            &quot;address&quot;: &quot;4 Glacier Hill Court&quot;,
+            &quot;zip&quot;: &quot;90305&quot;,
+            &quot;lat&quot;: 33.9583,
+            &quot;long&quot;: -118.3258
+        },
+        {
+            &quot;id&quot;: 30,
+            &quot;city&quot;: &quot;San Francisco&quot;,
+            &quot;state&quot;: &quot;California&quot;,
+            &quot;st&quot;: &quot;CA&quot;,
+            &quot;address&quot;: &quot;0 Loeprich Drive&quot;,
+            &quot;zip&quot;: &quot;94164&quot;,
+            &quot;lat&quot;: 37.7848,
+            &quot;long&quot;: -122.7278
+        },
+        ...
+    ]
+    &#x60;&#x60;&#x60;
+
+Error:
+
+- 404: The state does not exist
+- 500: Something went wrong on the server
+
+  
+
+3. Get all reviews for a dealership.
+
+- Language: Python
+- Endpoint: &#x60;/api/review?dealerId&#x3D;&quot;&quot;&#x60; 
+- Method: GET
+- Parameters:
+  - dealerId: the unique id of the dealership
+- Output: List of reviews for the given dealership
+
+    &#x60;&#x60;&#x60;
+        [
+            {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;Berkly Shepley&quot;,
+                &quot;dealership&quot;: 15,
+                &quot;review&quot;: &quot;some review&quot;,
+                &quot;purchase&quot;: true,
+                &quot;purchase_date&quot;: &quot;07/11/2020&quot;,
+                &quot;car_make&quot;: &quot;Audi&quot;,
+                &quot;car_model&quot;: &quot;A6&quot;,
+                &quot;car_year&quot;: 2010
+            },
+            {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;Gwenora Zettoi&quot;,
+                &quot;dealership&quot;: 15,
+                &quot;review&quot;: &quot;some review&quot;,
+                &quot;purchase&quot;: flase
+            }
+        ]
+    &#x60;&#x60;&#x60;
+
+Error:
+
+- 404: dealerId does not exist
+- 500: Something went wrong on the server
+
+4. Post review for dealership
+
+- Language: Python
+- Endpoint: &#x60;/api/review&#x60; 
+- Method: POST
+- Parameters:
+  - JSON of the review as follows:
+    &#x60;&#x60;&#x60;
+    {
+    &quot;review&quot;: 
+        {
+            &quot;id&quot;: 1114,
+            &quot;name&quot;: &quot;Upkar Lidder&quot;,
+            &quot;dealership&quot;: 15,
+            &quot;review&quot;: &quot;Great service!&quot;,
+            &quot;purchase&quot;: false,
+            &quot;another&quot;: &quot;field&quot;,
+            &quot;purchase_date&quot;: &quot;02/16/2021&quot;,
+            &quot;car_make&quot;: &quot;Audi&quot;,
+            &quot;car_model&quot;: &quot;Car&quot;,
+            &quot;car_year&quot;: 2021
+        }
+    }
+    &#x60;&#x60;&#x60;
+Error:
+- 500: Something went wrong on the server
+
+::page{title&#x3D;&quot;Submission&quot;}
+
+Take a note of the following URLs to submit for peer review:
+
+1. URL of github repo of your solution code.
+2. URL of the GET dealership endpoint &#x60;/api/dealership&#x60;.
+3. URL of the GET reviews endpoint &#x60;api/review&#x60;.
+4. URL of the POST endpoint &#x60;/api/review&#x60;.
+
+::page{title&#x3D;&quot;Summary&quot;}
+
+In this lab, you uploaded the dealership data provided to you as a JSON file into the Cloudant database. You then created the different IBM Cloud Function actions served by the API gateway.
+
+## Author(s)
+
+&lt;h4&gt; Upkar Lidder &lt;h4/&gt;
+
+### Other Contributor(s) 
+
+Yan Luo
+
+Priya
+
+## Changelog
+
+| Date | Version | Changed by | Change Description |
+|------|--------|--------|---------|
+| 2021-01-28 | 1.0 | Upkar Lidder | Created new instructions for Capstone project |
+
+## &lt;h3 align&#x3D;&quot;center&quot;&gt; © IBM Corporation 2021. All rights reserved. &lt;h3/&gt;
+
+</textarea>
+    </div>
+</div>
+
+<script src="editormd/examples/js/jquery.min.js"></script>
+<script src="editormd/editormd.js?version=2.0.9"></script>
+
+<script src="editormd/languages/en.js"></script>
+
+<script src="public/js/common.js?version=2.0.9"></script>
+<script src="public/js/render.js?version=2.0.9"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        let token = findGetParameter("token");
+
+        let LABS_BASE_URL = 'https://labs.cognitiveclass.ai';
+        let asset_library_prefix_url = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork';
+        let tool_type = "theia";
+        let projectId = "";
+        let filename = `labs/module_3_backend_services/1-instructional-labs-theia-cloud-functions.md`;
+        try {
+            let projectIdStored = false
+            let project = JSON.parse(localStorage.getItem("sn-project"))
+            if (project != null) {
+                if (projectId in project) {
+                    projectIdStored = true
+                    if (!(filename in project[projectId])) {
+                        project[projectId][filename] = {}
+                    }
+                }
+            }
+            if (!projectIdStored) {
+                project = {}
+                project[projectId] = {}
+                project[projectId][filename] = {}
+            }
+            window.localStorage.setItem("sn-project", JSON.stringify(project))
+        }
+        catch (e) {
+            console.log(e)
+        }
+
+        var authorEditor = editormd("test-editormd", "2.0.9", {
+
+            tool_type,
+            projectId,
+            filename,
+
+            width: "100%",
+            //height: "100%",
+            autoHeight: true,
+
+            // mode: 'markdown',
+
+            theme: "dark",
+            previewTheme: tool_type == "instructional-lab" ? "light" : "dark",
+            editorTheme: "pastel-on-dark",
+
+            readOnly: true,
+
+            pluginPath: 'plugins/',
+
+
+            syncScrolling: false,
+
+            htmlDecode: 'img',
+
+            path: 'editormd/lib/',
+            watch: false,
+
+            // markdown,
+            toolbar: false,
+
+            atLink: false,
+            toc: true,
+            tocm: true,
+            tocDropdown: false,
+            tocTitle: "Table of Contents For your lab!",
+
+            tex: true,
+            flowChart: true,
+            sequenceDiagram: true,
+            codeFold: true, // Doesn't do anything?
+            taskList: true,
+            emoji: true,
+
+            saveMarkdownToTextarea: true,
+
+            onresize: function () {
+                $("html,body").css("overflow", "hidden");
+
+                this.preview.css({
+                    width: $(window).width(),
+                    height: $(window).height()
+                })
+
+                adjustProgressBarWidth()
+            },
+            fixCodeBlocks: function () {
+                adjustCodeBlocks(this);
+            },
+            onload: function () {
+                $("[type=\"file\"]").bind("change", function () {
+                    alert($(this).val());
+                    authorEditor.cm.replaceSelection($(this).val());
+                    console.log($(this).val(), authorEditor);
+                });
+
+                this.fullscreen();
+                this.previewing();
+
+                setPreviewWatchToolbar(this);
+
+                if (tool_type != "instructional-lab") {
+                    fixCustomPlugins(this);
+                }
+                setAssetLibraryPrefixUrl(asset_library_prefix_url);
+                //comms with UI
+                setParentUrl(LABS_BASE_URL);
+                establishCommsWithUI(this);
+                //let the UI know that the author-ide has loaded
+                requestToUI({ type: "frame_loaded" });
+            }
+        });
+    });
+</script>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+    </script>
+
+</html>

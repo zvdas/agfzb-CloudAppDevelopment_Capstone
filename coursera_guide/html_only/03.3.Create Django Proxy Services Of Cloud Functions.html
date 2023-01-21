@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="keywords" content="Editor.md,editor,Markdown Editor,Markdown" />
+    <meta name="description" content="Skills Network Author IDE" />
+    <title>Skills Network Editor</title>
+    <link rel="stylesheet" href="editormd/examples/css/style.css?version=2.0.9" />
+    <link rel="stylesheet" href="editormd/css/editormd.css?version=2.0.9" />
+    <link rel="stylesheet" href="public/css/custom.css?version=2.0.9" />
+    <link rel="shortcut icon" href="public/images/SN_favicon.png" type="image/x-icon" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="public/js/comms.js?version=2.0.9"></script>
+    <script src="//unpkg.com/alpinejs"></script>
+</head>
+
+<body>
+    <div id="layout">
+    <div id="test-editormd">
+        <textarea style="display:none;">::page{title&#x3D;&quot;Create Django Proxy Services Of Cloud Functions&quot;}
+
+&lt;img src&#x3D;&quot;https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/images/IDSN-logo.png&quot; width&#x3D;&quot;200&quot; alt&#x3D;&quot;cognitiveclass.ai logo&quot;&gt;
+
+##
+
+**Estimated time needed:** 150 minutes
+
+In previous labs, you created car model and car make Django models residing in a local SQLite repository. 
+You also created dealer and review models in a remote Cloudant repository (served by IBM Cloud Function actions). 
+
+Now, you need to integrate those models and services to manage all entities such as dealers, reviews, and cars, and 
+present the results in Django templates.
+
+To integrate external dealer and review data, you need to call the cloud function APIs from the Django app and 
+process the API results in Django views. Such Django views can be seen as proxy services to the end user because
+they fetch data from external resources per users&#x27; requests.
+
+In this lab, you will create such Django views as proxy services.
+
+::page{title&#x3D;&quot;Environment setup&quot;}
+
+If your Theia workspace has been reset and you want to continue from what you have done previously, 
+please &#x60;git clone&#x60; or pull from your created GitHub repository. 
+
+- Set up the Python runtime if Theia workspace has been reset.
+
+&#x60;&#x60;&#x60;
+python3 -m pip install -U -r requirements.txt
+&#x60;&#x60;&#x60;
+
+Note: You may need to perform models migrations for a new Theia environment.
+
+::page{title&#x3D;&quot;Create a &#x60;get_dealerships&#x60; Django view to get dealer list&quot;}
+
+In the previous lab, you would have created a cloud function service called &#x60;dealer-get&#x60; to return a list of dealerships.
+Next, let&#x27;s see how to call that &#x60;dealer-get&#x60; service from the Django app.
+
+Before you learn how to make REST calls in Django, let&#x27;s create a dealer model in &#x60;models.py&#x60; to 
+represent and store a dealer entity.
+
+- Open &#x60;/models.py&#x60;, add a &#x60;CarDealer&#x60; class. Note that this is a plain Python class instead of a subclass
+of Django model.
+ 
+
+An instance of &#x60;CarDealer&#x60; is used as a plain data object for storing a dealer object returned from
+&#x60;dealer-get&#x60; service:
+
+&#x60;&#x60;&#x60;python
+class CarDealer:
+
+    def __init__(self, address, city, full_name, id, lat, long, short_name, st, zip):
+        # Dealer address
+        self.address &#x3D; address
+        # Dealer city
+        self.city &#x3D; city
+        # Dealer Full Name
+        self.full_name &#x3D; full_name
+        # Dealer id
+        self.id &#x3D; id
+        # Location lat
+        self.lat &#x3D; lat
+        # Location long
+        self.long &#x3D; long
+        # Dealer short name
+        self.short_name &#x3D; short_name
+        # Dealer state
+        self.st &#x3D; st
+        # Dealer zip
+        self.zip &#x3D; zip
+
+    def __str__(self):
+        return &quot;Dealer name: &quot; + self.full_name
+
+&#x60;&#x60;&#x60;
+
+The actual instance attributes may be different from the object returned by the service you created. Update them in
+above &#x60;CarDealer&#x60; class accordingly.
+
+Now we can start calling &#x60;review-get&#x60; cloud function service and load the JSON results into a list of &#x60;CarDealer&#x60; objects.
+
+There are many ways to make HTTP requests in Django. 
+Here we use a very popular and easy-to-use Python library called &#x60;requests&#x60;.
+
+- Create a new Python file called &#x60;restapis.py&#x60; under &#x60;djangoapp/&#x60; folder and 
+add a sample &#x60;get_request&#x60; method:
+
+&#x60;&#x60;&#x60;python
+import requests
+import json
+from .models import CarDealer
+from requests.auth import HTTPBasicAuth
+
+def get_request(url, **kwargs):
+    print(kwargs)
+    print(&quot;GET from {} &quot;.format(url))
+    try:
+        # Call get method of requests library with URL and parameters
+        response &#x3D; requests.get(url, headers&#x3D;{&#x27;Content-Type&#x27;: &#x27;application/json&#x27;},
+                                    params&#x3D;kwargs)
+    except:
+        # If any error occurs
+        print(&quot;Network exception occurred&quot;)
+    status_code &#x3D; response.status_code
+    print(&quot;With status {} &quot;.format(status_code))
+    json_data &#x3D; json.loads(response.text)
+    return json_data
+
+&#x60;&#x60;&#x60;
+
+The &#x60;get_request&#x60; method has two arguments, the URL to be requested, and a Python keyword arguments representing
+all URL parameters to be associated with the get call.
+
+The &#x60;requests.get(url, headers&#x3D;{&#x27;Content-Type&#x27;: &#x27;application/json&#x27;},
+                                    params&#x3D;kwargs)&#x60; calls a &#x60;GET&#x60; method in &#x60;requests&#x60; library with a URL and any URL 
+                                    parameters such as &#x60;dealerId&#x60; or &#x60;state&#x60;. 
+
+                                    
+
+The content of the response will be a JSON object to be consumed by other methods such as a Django view.
+
+Next, let&#x27;s parse the dealership JSON result returned by the &#x60;get_request&#x60; call.
+
+- Create a &#x60;get_dealers_from_cf&#x60; method to call &#x60;get_request&#x60; and parse its JSON result. 
+One example method may look like the following:
+
+&#x60;&#x60;&#x60;python
+def get_dealers_from_cf(url, **kwargs):
+    results &#x3D; []
+    # Call get_request with a URL parameter
+    json_result &#x3D; get_request(url)
+    if json_result:
+        # Get the row list in JSON as dealers
+        dealers &#x3D; json_result[&quot;rows&quot;]
+        # For each dealer object
+        for dealer in dealers:
+            # Get its content in &#x60;doc&#x60; object
+            dealer_doc &#x3D; dealer[&quot;doc&quot;]
+            # Create a CarDealer object with values in &#x60;doc&#x60; object
+            dealer_obj &#x3D; CarDealer(address&#x3D;dealer_doc[&quot;address&quot;], city&#x3D;dealer_doc[&quot;city&quot;], full_name&#x3D;dealer_doc[&quot;full_name&quot;],
+                                   id&#x3D;dealer_doc[&quot;id&quot;], lat&#x3D;dealer_doc[&quot;lat&quot;], long&#x3D;dealer_doc[&quot;long&quot;],
+                                   short_name&#x3D;dealer_doc[&quot;short_name&quot;],
+                                   st&#x3D;dealer_doc[&quot;st&quot;], zip&#x3D;dealer_doc[&quot;zip&quot;])
+            results.append(dealer_obj)
+
+    return results
+
+&#x60;&#x60;&#x60;
+
+You can see parsing JSON in Python is very similar to accessing data with Python dictionary (key-value pair). 
+You just need to get values from keys. A value could be an object or a collection of objects such as list or dictionary.
+
+Next, let&#x27;s create a Django view to call &#x60;get_dealers_from_cf&#x60; and return the result as a HTTPResponse to browser.
+
+- Find the &#x60;get_dealerships&#x60; view method in &#x60;djangoapp/views.py&#x60;, update the method with following:
+
+&#x60;&#x60;&#x60;python
+def get_dealerships(request):
+    if request.method &#x3D;&#x3D; &quot;GET&quot;:
+        url &#x3D; &quot;your-cloud-function-domain/dealerships/dealer-get&quot;
+        # Get dealers from the URL
+        dealerships &#x3D; get_dealers_from_cf(url)
+        # Concat all dealer&#x27;s short name
+        dealer_names &#x3D; &#x27; &#x27;.join([dealer.short_name for dealer in dealerships])
+        # Return a list of dealer short name
+        return HttpResponse(dealer_names)
+&#x60;&#x60;&#x60;
+
+- Configure the route for &#x60;get_dealerships&#x60; view method in &#x60;url.py&#x60;:
+
+&#x60;&#x60;&#x60;python
+from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
+from . import views
+
+app_name &#x3D; &#x27;djangoapp&#x27;
+urlpatterns &#x3D; [
+    # route is a string contains a URL pattern
+    # view refers to the view function
+    # name the URL
+    path(route&#x3D;&#x27;&#x27;, view&#x3D;views.get_dealerships, name&#x3D;&#x27;index&#x27;)
+] + static(settings.MEDIA_URL, document_root&#x3D;settings.MEDIA_ROOT)
+&#x60;&#x60;&#x60;
+
+- Test the &#x60;get_dealerships&#x60; view in Theia
+
+To do this, click on the Skills Network button on the right, it will open the &quot;Skills Network Toolbox&quot;. Then click &#x60;OTHER&#x60; then &#x60;Launch Application&#x60;. From there you should be able to enter the port as &#x60;8000&#x60; and launch the development server.
+
+&lt;img src&#x3D;&quot;https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork/labs/module_3_backend_services/images/Launch_Application.png&quot; width&#x3D;&quot;80%&quot; style&#x3D;&quot;border: solid 1px grey&quot;&gt;
+
+- Go to &#x60;https://userid-8000.theiadocker-1.proxy.cognitiveclass.ai/djangoapp&#x60;. 
+You should see a list of dealership names.
+
+More details about how to create Django view and configure URL can be found in this lab:
+
+&lt;a href&#x3D;&quot;https://cocl.us/1K9kO&quot; target&#x3D;&quot;_blank&quot;&gt;Views and templates&lt;/a&gt;
+
+You will find more detailed references about &#x60;requests&#x60; package at the end of this lab.
+
+Coding practice: create a &#x60;get_dealer_by_id&#x60; or &#x60;get_dealers_by_state&#x60; method in &#x60;restapis.py&#x60;.
+HINT, the only difference from the &#x60;get_dealers_from_cf&#x60; method is adding a dealer id or state URL parameter argument when 
+calling the &#x60;def get_request(url, **kwargs):&#x60; method such as &#x60;get_request(url, dealerId&#x3D;dealerId)&#x60;.
+
+::page{title&#x3D;&quot;Create a Django &#x60;get_dealer_details&#x60; view to get reviews of a dealer&quot;}
+
+By now, you should understand how to call a cloud function using &#x60;requests&#x60; library in Django and 
+convert the JSON results into Python objects. 
+
+Next, let&#x27;s create another &#x60;get&#x60; call to the &#x60;revew-get&#x60; cloud function to get reviews for a dealer.
+
+- Define a &#x60;DealerReview&#x60; class in &#x60;models.py&#x60;, it may contain the following attributes:
+    - dealership
+    - name
+    - purchase
+    - review
+    - purchase_date
+    - car_make
+    - car_model
+    - car_year
+    - sentiment
+    - id
+
+The value of &#x60;sentiment&#x60; attribute will be determined by Watson NLU service. It could be &#x60;positive&#x60;, &#x60;neutral&#x60;, or &#x60;negative&#x60;.
+You will make a Watson NLU call in the next step.
+
+- Create a &#x60;get_dealer_reviews_from_cf&#x60; method in &#x60;restapis.py&#x60;. It makes a &#x60;get_request(url, dealerId&#x3D;dealer_id)&#x60; method call
+to get all reviews by dealer&#x27;s id. Then it converts the JSON result into a list of &#x60;DealerReview&#x60; objects.
+
+- Define a &#x60;def get_dealer_details(request, dealer_id):&#x60; view method in &#x60;views.py&#x60; to 
+call &#x60;get_dealer_reviews_from_cf&#x60; method in &#x60;restapis.py&#x60;, 
+and append a list of reviews to context and return a &#x60;HttpResponse&#x60;, similar to the dealer names in previous step.
+
+Here we need to define &#x60;dealer_id&#x60; argument to specify which dealer you want to get reviews from.
+
+- Configure the route for &#x60;get_dealer_details&#x60; view in &#x60;url.py&#x60;. 
+For example, &#x60;path(&#x27;dealer/&lt;int:dealer_id&gt;/&#x27;, views.get_dealer_details, name&#x3D;&#x27;dealer_details&#x27;),&#x60;.
+
+- Test the &#x60;get_dealer_details&#x60; view in Theia by launching the application with the development server on port &#x60;8000&#x60; as done earlier.
+You should see a list of reviews for a specific dealer.
+
+::page{title&#x3D;&quot;Update the &#x60;get_dealer_reviews_from_cf&#x60; view to call Watson NLU for analyzing the sentiment/tone for each review&quot;}
+
+Now that you get a list of reviews for a dealer, you could use Watson NLU to analyze their sentiment/tone.
+Since Watson NLU is not public, you will need to add authentication argument to &#x60;requests.get()&#x60; method.
+
+- Open &#x60;restapis.py&#x60;, update &#x60;get_request(url, **kwargs)&#x60; by providing an &#x60;auth&#x60; argument 
+with an API key you created in IBM Watson NLU.
+
+&#x60;&#x60;&#x60;
+requests.get(url, params&#x3D;params, headers&#x3D;{&#x27;Content-Type&#x27;: &#x27;application/json&#x27;},
+                                    auth&#x3D;HTTPBasicAuth(&#x27;apikey&#x27;, api_key))
+&#x60;&#x60;&#x60;
+
+You may use a &#x60;if&#x60; statement to check if &#x60;api_key&#x60; was provided and call &#x60;requests.get()&#x60; differently.
+
+&#x60;&#x60;&#x60;
+ if api_key:
+   # Basic authentication GET
+   request.get(url, params&#x3D;params, auth&#x3D;, ...)
+ else:
+   # no authentication GET
+   request.get(url, params&#x3D;params)
+&#x60;&#x60;&#x60;
+
+- In &#x60;restapis.py&#x60; file, create a new &#x60;analyze_review_sentiments(dealerreview)&#x60;.
+ 
+
+In the method, make a call to the updated &#x60;get_request(url, **kwargs)&#x60; method with following parameters:
+
+&#x60;&#x60;&#x60;python
+...
+  params &#x3D; dict()
+  params[&quot;text&quot;] &#x3D; kwargs[&quot;text&quot;]
+  params[&quot;version&quot;] &#x3D; kwargs[&quot;version&quot;]
+  params[&quot;features&quot;] &#x3D; kwargs[&quot;features&quot;]
+  params[&quot;return_analyzed_text&quot;] &#x3D; kwargs[&quot;return_analyzed_text&quot;]
+  response &#x3D; requests.get(url, params&#x3D;params, headers&#x3D;{&#x27;Content-Type&#x27;: &#x27;application/json&#x27;},
+                                    auth&#x3D;HTTPBasicAuth(&#x27;apikey&#x27;, api_key))
+...
+&#x60;&#x60;&#x60;
+
+You can find more detailed references about Watson NLU text analysis at the end of this lab.
+
+- In &#x60;restapis.py&#x60; file, update &#x60;get_dealer_reviews_from_cf&#x60; method by assigning the Watson NLU result 
+to the &#x60;sentiment&#x60; attribute of a &#x60;DealerReview&#x60; object:
+
+&#x60;&#x60;&#x60;
+...
+review_obj.sentiment &#x3D; analyze_review_sentiments(review_obj.review)
+&#x60;&#x60;&#x60;
+
+- Update &#x60;get_dealer_details&#x60; view to also print sentiment for each review:
+
+- Test the updated &#x60;get_dealer_details&#x60; view in Theia by launching the application with the development server on port &#x60;8000&#x60; as done earlier.
+
+::page{title&#x3D;&quot;Create a &#x60;add_review&#x60; Django view to post a dealer review&quot;}
+
+By now you have learned how to make various GET calls. 
+
+Next, you will be creating a POST call to the &#x60;review-post&#x60; cloud function to add a review to a specific dealer.
+
+- Open &#x60;restapis.py&#x60;, create a new &#x60;post_request(url, json_payload, **kwargs):&#x60; method. 
+The key statement in this method is calling &#x60;post&#x60; method in &#x60;requests&#x60; package.
+
+For example, &#x60;requests.post(url, params&#x3D;kwargs, json&#x3D;json_payload)&#x60;.
+
+The key difference from the &#x60;get()&#x60; method is you need to add a &#x60;json&#x60; argument with a Python dictionary-like object as request body.
+
+- Open &#x60;views.py&#x60;, create a new &#x60;def add_review(request, dealer_id):&#x60; method to handle review post request.
+
+- In the &#x60;add_review&#x60; view method:
+    - First check if user is authenticated because only authenticated users can post reviews for a dealer.
+    - Create a dictionary object called &#x60;review&#x60; to append keys like 
+    (&#x60;time&#x60;, &#x60;name&#x60;, &#x60;dealership&#x60;, &#x60;review&#x60;, &#x60;purchase&#x60;) and
+    any attributes you defined in your &#x60;review-post&#x60; cloud function.
+    
+    For example:
+    &#x60;&#x60;&#x60;
+    review[&quot;time&quot;] &#x3D; datetime.utcnow().isoformat()
+    review[&quot;dealership&quot;] &#x3D; 11
+    review[&quot;review&quot;] &#x3D; &quot;This is a great car dealer&quot;
+    &#x60;&#x60;&#x60;
+  
+    - Create another dictionary object called &#x60;json_payload&#x60; with one key called &#x60;review&#x60;. Like
+    &#x60;json_payload[&quot;review&quot;] &#x3D; review&#x60;. The &#x60;json_payload&#x60; will be used as the request body.
+    - Call the &#x60;post_request&#x60; method with the payload 
+    
+    &#x60;post_request(url, json_payload, dealerId&#x3D;dealer_id)&#x60;.
+    
+    - Return the result of &#x60;post_request&#x60; to &#x60;add_review&#x60; view method. You may print the post response
+    in console or append it to HTTPResponse and render it on browser.
+
+- Configure the route for &#x60;add_review&#x60; view in &#x60;url.py&#x60;.
+ 
+
+For example, &#x60;path(&#x27;dealer/&lt;int:dealer_id&gt;/&#x27;, views.get_dealer_details, name&#x3D;&#x27;dealer_details&#x27;)&#x60;.
+
+- Test the &#x60;add_review&#x60; view in Theia. So when you make an add review post request, the &#x60;add_view&#x60;
+method will create a JSON payload contains a review object and post it to your &#x60;review-post&#x60; cloud function action.
+
+::page{title&#x3D;&quot;Commit your updated project to GitHub&quot;}
+
+Commit all updates to the GitHub repository you created so that you can save your work.
+
+If you need to refresh your memory on how to commit and push to GitHub in Theia lab environment, please refer to this lab [Working with git in the Theia lab environment](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-CD0101EN-SkillsNetwork/labs/GitHubLabs/Github_commit.md.html)
+
+::page{title&#x3D;&quot;External References&quot;}
+
+- &lt;a href&#x3D;&quot;https://requests.readthedocs.io/en/latest/api/?utm_medium&#x3D;Exinfluencer&amp;utm_source&#x3D;Exinfluencer&amp;utm_content&#x3D;000026UJ&amp;utm_term&#x3D;10006555&amp;utm_id&#x3D;NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMCD0321ENSkillsNetwork1046-2022-01-01#main-interface&quot; target&#x3D;&quot;_blank&quot;&gt;Requests Developer Interface&lt;/a&gt;
+
+- &lt;a href&#x3D;&quot;https://cloud.ibm.com/apidocs/natural-language-understanding?utm_medium&#x3D;Exinfluencer&amp;utm_source&#x3D;Exinfluencer&amp;utm_content&#x3D;000026UJ&amp;utm_term&#x3D;10006555&amp;utm_id&#x3D;NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMCD0321ENSkillsNetwork1046-2022-01-01#analyzeget&quot; target&#x3D;&quot;_blank&quot;&gt;Watson NLU API Reference&lt;/a&gt;
+
+::page{title&#x3D;&quot;Summary&quot;}
+
+In this lab, you have learned how to create proxy services to call the cloud functions in Django, 
+convert their JSON results into Python objects such as &#x60;CarDealer&#x60; or &#x60;DealerReview&#x60;, and return the objects as a HTTPResonse. 
+
+In the next lab, you will create Django templates to present those objects.
+
+## Author(s)
+
+&lt;h4&gt; Yan Luo &lt;h4/&gt;
+
+### Other Contributor(s) 
+
+Upkar Lidder
+
+Priya
+
+## Changelog
+
+| Date | Version | Changed by | Change Description |
+|------|--------|--------|---------|
+| 2021-02-22 | 1.0 | Yan Luo | Created new instructions for Capstone project |
+| 2022-09-01 | 1.1 | K Sundararajan | Updated &#x60;Launch Application&#x60; instructions as per the new Theia IDE |
+| 2022-09-20 | 1.2 | K Sundararajan | Updated pip (packages installation) command |
+
+## &lt;h3 align&#x3D;&quot;center&quot;&gt; © IBM Corporation 2021. All rights reserved. &lt;h3/&gt;
+
+</textarea>
+    </div>
+</div>
+
+<script src="editormd/examples/js/jquery.min.js"></script>
+<script src="editormd/editormd.js?version=2.0.9"></script>
+
+<script src="editormd/languages/en.js"></script>
+
+<script src="public/js/common.js?version=2.0.9"></script>
+<script src="public/js/render.js?version=2.0.9"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        let token = findGetParameter("token");
+
+        let LABS_BASE_URL = 'https://labs.cognitiveclass.ai';
+        let asset_library_prefix_url = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CD0321EN-SkillsNetwork';
+        let tool_type = "theia";
+        let projectId = "";
+        let filename = `labs/module_3_backend_services/3-instructional-labs-theia-django-proxy.md`;
+        try {
+            let projectIdStored = false
+            let project = JSON.parse(localStorage.getItem("sn-project"))
+            if (project != null) {
+                if (projectId in project) {
+                    projectIdStored = true
+                    if (!(filename in project[projectId])) {
+                        project[projectId][filename] = {}
+                    }
+                }
+            }
+            if (!projectIdStored) {
+                project = {}
+                project[projectId] = {}
+                project[projectId][filename] = {}
+            }
+            window.localStorage.setItem("sn-project", JSON.stringify(project))
+        }
+        catch (e) {
+            console.log(e)
+        }
+
+        var authorEditor = editormd("test-editormd", "2.0.9", {
+
+            tool_type,
+            projectId,
+            filename,
+
+            width: "100%",
+            //height: "100%",
+            autoHeight: true,
+
+            // mode: 'markdown',
+
+            theme: "dark",
+            previewTheme: tool_type == "instructional-lab" ? "light" : "dark",
+            editorTheme: "pastel-on-dark",
+
+            readOnly: true,
+
+            pluginPath: 'plugins/',
+
+
+            syncScrolling: false,
+
+            htmlDecode: 'img',
+
+            path: 'editormd/lib/',
+            watch: false,
+
+            // markdown,
+            toolbar: false,
+
+            atLink: false,
+            toc: true,
+            tocm: true,
+            tocDropdown: false,
+            tocTitle: "Table of Contents For your lab!",
+
+            tex: true,
+            flowChart: true,
+            sequenceDiagram: true,
+            codeFold: true, // Doesn't do anything?
+            taskList: true,
+            emoji: true,
+
+            saveMarkdownToTextarea: true,
+
+            onresize: function () {
+                $("html,body").css("overflow", "hidden");
+
+                this.preview.css({
+                    width: $(window).width(),
+                    height: $(window).height()
+                })
+
+                adjustProgressBarWidth()
+            },
+            fixCodeBlocks: function () {
+                adjustCodeBlocks(this);
+            },
+            onload: function () {
+                $("[type=\"file\"]").bind("change", function () {
+                    alert($(this).val());
+                    authorEditor.cm.replaceSelection($(this).val());
+                    console.log($(this).val(), authorEditor);
+                });
+
+                this.fullscreen();
+                this.previewing();
+
+                setPreviewWatchToolbar(this);
+
+                if (tool_type != "instructional-lab") {
+                    fixCustomPlugins(this);
+                }
+                setAssetLibraryPrefixUrl(asset_library_prefix_url);
+                //comms with UI
+                setParentUrl(LABS_BASE_URL);
+                establishCommsWithUI(this);
+                //let the UI know that the author-ide has loaded
+                requestToUI({ type: "frame_loaded" });
+            }
+        });
+    });
+</script>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+    </script>
+
+</html>

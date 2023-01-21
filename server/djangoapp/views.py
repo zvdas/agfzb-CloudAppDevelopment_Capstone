@@ -82,8 +82,8 @@ def registration_request(request):
 # Update the `get_dealerships` view to render the index page with a list of dealerships
 def get_dealerships(request):
     if request.method == "GET":
-        # url = "http://localhost:3000/dealerships"
-        url = "https://us-south.functions.appdomain.cloud/api/v1/web/ec9083e0-ffa1-4cd8-9e8b-9f4848167f20/dealerships/get-dealership.json"
+        url = "http://localhost:3000/get_dealer"
+        # url = "https://us-south.functions.appdomain.cloud/api/v1/web/ec9083e0-ffa1-4cd8-9e8b-9f4848167f20/dealerships/get-dealership.json"
         # Get dealers from the URL
         dealerships = get_dealers_from_cf(url)
         # Concat all dealer's short name
@@ -97,13 +97,15 @@ def get_dealerships(request):
 
 
 # Create a `get_dealer_details` view to render the reviews of a dealer
-def get_dealer_details(request, dealer_id):
+# def get_dealer_details(request, dealer_id):
+def get_dealer_details(request):
     if request.method == "GET":
-        print("id: ", dealer_id)
-        # url = "http://localhost:3000/reviews"
-        url = "https://us-south.functions.appdomain.cloud/api/v1/web/ec9083e0-ffa1-4cd8-9e8b-9f4848167f20/dealerships/get-review.json"
+        # print("id: ", dealer_id)
+        url = "http://localhost:3000/get_review"
+        # url = "https://us-south.functions.appdomain.cloud/api/v1/web/ec9083e0-ffa1-4cd8-9e8b-9f4848167f20/dealerships/get-review.json"
         # dealer_id = dealer_id
-        reviews = get_dealer_reviews_from_cf(url, dealer_id)
+        # reviews = get_dealer_reviews_from_cf(url, dealer_id)
+        reviews = get_dealer_reviews_from_cf(url)
         dealer_reviews = [review.review for review in reviews]
         return HttpResponse(dealer_reviews)
 
