@@ -38,14 +38,22 @@
       "name": "Iorgos Colley",
       "dealership": 13,
       "review": "Optional heuristic software",
-      "purchase": false
+      "purchase": false,
+      "purchase_date": "10/20/2022",
+      "car_make": "Mercedes",
+      "car_model": "McLarenF1",
+      "car_year": 2007
     },
     {
       "id": 5,
       "name": "Kissee Noirel",
       "dealership": 46,
       "review": "Diverse client-server success",
-      "purchase": false
+      "purchase": false,
+      "purchase_date": "10/20/2020",
+      "car_make": "Lexus",
+      "car_model": "CX-5",
+      "car_year": 2005
     }
   ]
 }
