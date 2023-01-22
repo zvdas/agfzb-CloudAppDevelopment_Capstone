@@ -22,8 +22,8 @@ def main(dict):
 
 /*
 {
-    "ACCOUNT_NAME": "b65d1bed-d060-4cb3-91b4-ba3cbb0b7e16-bluemix",
-    "API_KEY": "vIu9HaKiRhjDxioRa24NhIKdxETRuWRJDhP8_fU9FWfc",
+    "ACCOUNT_NAME": "",
+    "API_KEY": "",
     "DEALERSHIP": 15
 }
 */
