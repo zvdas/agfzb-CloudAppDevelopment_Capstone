@@ -78,34 +78,20 @@ def get_dealers_from_cf(url, **kwargs):
 # def get_dealer_by_id_from_cf(url, dealerId):
 # - Call get_request() with specified arguments
 # - Parse JSON results into a DealerView object list
-# def get_dealer_reviews_from_cf(url, dealerId):
 def get_dealer_reviews_from_cf(url):
-    results = []
-    # json_result = get_request(url,dealerId)
+# def get_dealer_reviews_from_cf(url, dealerId):
     json_result = get_request(url)
+    # json_result = get_request(url,dealerId)
     # print("url: ",url," id: ",dealerId)
-    if json_result:
-    #     reviews = json_result['rows']
-    #     for review in reviews:
-    #         review_doc = review['doc']
-    #         review_obj = DealerReview(
-    #             # id=review_doc['id'], car_make=review_doc['car_make'], 
-    #             # car_model=review_doc['car_model'], car_year=review_doc['car_year'], 
-    #             dealership=review_doc['dealership'], name=review_doc['name'], purchase=review_doc['purchase'], 
-    #             # purchase_date=review_doc['purchase_date'], 
-    #             review=review_doc['review'])#, sentiment=review_doc['sentiment'])
-    #         results.append(review_obj)
-    # return results
-
-       review_object = [
-            DealerReview(
-                # id=x['doc']['id'], car_make=x['doc']['car_make'], car_model=x['doc']['car_model'], car_year=x['doc']['car_year'], 
-                dealership=x['doc']['dealership'], name=x['doc']['name'], purchase=x['doc']['purchase'], 
-                # purchase_date=x['doc']['purchase_date'], 
-                review=x['doc']['review'], 
-                # sentiment=x['doc']['sentiment']
-                ) for x in json_result['rows']
-        ]
+    review_object = [
+        DealerReview(
+            # id=x['id'], 
+            car_make=x['car_make'], car_model=x['car_model'], car_year=x['car_year'], 
+            dealership=x['dealership'], name=x['name'], purchase=x['purchase'], 
+            purchase_date=x['purchase_date'], review=x['review']
+            #, sentiment=x['sentiment']
+            ) for x in json_result['docs'] if json_result
+    ]
     return review_object
 
 
