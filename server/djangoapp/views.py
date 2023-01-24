@@ -10,7 +10,7 @@ from datetime import datetime
 import logging
 import json
 
-from .restapis import get_dealer_reviews_from_cf, get_dealers_from_cf
+from .restapis import get_dealer_reviews_from_cf, get_dealers_from_cf, post_request
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -122,5 +122,22 @@ def add_review(request):
         return render(request, 'djangoapp/add_review.html', context)
     if request.method == "POST":
         url = "http://localhost:3000/post_review"
-        # json_payload["review"]
+        review = request.POST['content']
+        purchase = "true" if request.POST['purchasecheck'] == 'on' else "false"
+        car_model = request.POST['car'].split('-')[0]
+        car_make = request.POST['car'].split('-')[1]
+        car_year = request.POST['car'].split('-')[2]
+        purchase_date  = request.POST['purchasedate']
+        json_payload = {
+            "name" : "dealership name",
+            "dealership": "dealership id",
+            "review": review,
+            "purchase": purchase,
+            "purchase_date": purchase_date,
+            "car_make": car_make,
+            "car_model": car_model,
+            "car_year": car_year
+        }
+        # print("payload: ", json_payload)
+        post_request(url, json_payload)
         return redirect("djangoapp:dealer_details")#, dealer_id=dealer_id)

@@ -19,6 +19,7 @@
             <h1 class="mx-5 mt-5">Add a review about </h1>
             <!-- <form action=" url 'djangoapp:add_review' dealer_id " method="post"> -->
             <form action="{% url 'djangoapp:add_review' %}" method="post">
+                {% csrf_token %}
                 <p class="mx-5">
                     Enter the review content:
                     <textarea class="form-control" id="content" name="content" rows="2" required></textarea>
@@ -31,7 +32,8 @@
                     Select your car (model-make-year): 
                     <select name="car" id="car" class="form-select ml-5" required>
                         {% for car in cars %}
-                            <option selected value={{car.id}}>{{car.name}}-{{car.car_make}}-{{car.car_year}}</option>
+                            <!-- <option selected value={{car.id}}>{{car.name}}-{{car.car_make}}-{{car.car_year}}</option> -->
+                        <option selected name="car" id="car">{{car.name}}-{{car.car_make}}-{{car.car_year}}</option>
                         {% endfor %}
                     </select>
                 </p>
@@ -40,7 +42,7 @@
                     <input class="date-own form-control" type="text" name="purchasedate" id="purchasedate">
                 </p>
                 <p class="mx-5">
-                    <input class="form-control btn btn-primary" type="button" value="Submit">
+                    <input class="form-control btn btn-primary" type="submit" value="Submit">
                 </p>
             </form>
         </div>
