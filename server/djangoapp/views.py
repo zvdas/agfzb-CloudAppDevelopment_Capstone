@@ -113,5 +113,14 @@ def get_dealer_details(request):
 
 # Create a `add_review` view to submit a review
 # def add_review(request, dealer_id):
-# ...
-
+def add_review(request):
+    context = {}
+    if request.method == "GET":
+        url = "http://localhost:3000/get_review_by_dealership"
+        reviews = get_dealer_reviews_from_cf(url)
+        context = {"cars": [review for review in reviews]}
+        return render(request, 'djangoapp/add_review.html', context)
+    if request.method == "POST":
+        url = "http://localhost:3000/post_review"
+        # json_payload["review"]
+        return redirect("djangoapp:dealer_details")#, dealer_id=dealer_id)

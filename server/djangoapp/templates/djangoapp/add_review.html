@@ -1,16 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    {% load static %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        {% load static %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 
-</head>
+    </head>
     <body>
-    <!--Add review form here -->
+        <!--Add a nav bar here -->
+        {% include 'djangoapp/navbar.html' %}
+
+        <!--Add review form here -->
+        <div class="card m-5 px-5">
+            <h1 class="mx-5 mt-5">Add a review about </h1>
+            <!-- <form action=" url 'djangoapp:add_review' dealer_id " method="post"> -->
+            <form action="{% url 'djangoapp:add_review' %}" method="post">
+                <p class="mx-5">
+                    Enter the review content:
+                    <textarea class="form-control" id="content" name="content" rows="2" required></textarea>
+                </p> 
+                <p class="mx-5">
+                    <input class="form-check-input" type="checkbox" name="purchasecheck" id="purchasecheck"> 
+                    Has purchased the car from ? (select purchased car information below if checked)
+                </p>
+                <p class="mx-5">
+                    Select your car (model-make-year): 
+                    <select name="car" id="car" class="form-select ml-5" required>
+                        {% for car in cars %}
+                            <option selected value={{car.id}}>{{car.name}}-{{car.car_make}}-{{car.car_year}}</option>
+                        {% endfor %}
+                    </select>
+                </p>
+                <p class="mx-5">
+                    Select your purchase date:
+                    <input class="date-own form-control" type="text" name="purchasedate" id="purchasedate">
+                </p>
+                <p class="mx-5">
+                    <input class="form-control btn btn-primary" type="button" value="Submit">
+                </p>
+            </form>
+        </div>
     </body>
+    <script type="text/javascript">
+        $('.date-own').datepicker({
+           format: 'mm/dd/yyyy'
+         });
+   </script>
 </html>
