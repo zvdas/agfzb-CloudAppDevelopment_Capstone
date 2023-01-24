@@ -20,7 +20,7 @@ def main(dict):
     service.set_service_url(dict['COUCH_URL'])
     
     response = service.post_find(
-      db='users',
+      db='reviews',
       selector={'dealership': {'$eq': dict['DEALERID']}},
     ).get_result()
     
