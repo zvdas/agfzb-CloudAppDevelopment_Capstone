@@ -27,17 +27,20 @@ def get_request(url, **kwargs):
 # e.g., response = requests.post(url, params=kwargs, json=payload)
 def post_request(url, payload):
     print(payload)
-    print("GET from {} ".format(url))
+    print("Post to {} ".format(url))
     try:
-        # Call get method of requests library with URL and parameters
-        response = requests.get(url, headers={'Content-Type': 'application/json'}, params=payload)
+        # Call post method of requests library with URL and parameters
+        # requests.post(url, headers={'Content-Type': 'application/json'}, json=payload, auth="QECPIMEVRl6PYqapP84trF4bOtHc1aKx4DEAH6wJHgxR")
+        requests.post(url, json=payload)
     except:
         # If any error occurs
         print("Network exception occurred")
-    status_code = response.status_code
-    print("With status {} ".format(status_code))
-    json_data = json.loads(response.text)
-    return json_data
+    # status_code = response.status_code
+    # print("With status {} ".format(status_code))
+    # print("With status {} ".format(response))
+    # json_data = json.loads(response.text)
+    # return json_data
+    # return response
 
 # Create a get_dealers_from_cf method to get dealers from a cloud function
 # def get_dealers_from_cf(url, **kwargs):
@@ -71,14 +74,15 @@ def get_dealer_reviews_from_cf(url, dealerId):
     # get reviews by dealer id
     json_result = [x['doc'] for x in get_request(url)['rows'] if x['doc']['dealership']==dealerId]
     # print("json result: ", json_result)
-    review_object = [
+    # print("length: ", get_request(url)["total_rows"])
+    review_object = {"reviews": [
         DealerReview(
             id=x['id'], car_make=x['car_make'], car_model=x['car_model'], 
             car_year=x['car_year'], dealership=x['dealership'], name=x['name'], 
             purchase=x['purchase'], purchase_date=x['purchase_date'], review=x['review'],
             sentiment=analyze_review_sentiments(x['review'])
         ) for x in json_result if json_result
-    ]
+    ], "length": get_request(url)["total_rows"]}
     # dealer_reviews = [x['review'] for x in json_result]
     # review_object.sentiment = analyze_review_sentiments(dealer_reviews)
     return review_object
@@ -103,5 +107,5 @@ def analyze_review_sentiments(dealer_review):
     ).get_result()
     # sentiment =  'positive' if response["keywords"][0]['relevance'] > 0.5 else 'negative' if response["keywords"][0]['relevance'] < 0.5 else 'neutral'
     sentiment =  response["keywords"][0]['relevance']
-    print("sentiment: ", sentiment)
+    # print("sentiment: ", sentiment)
     return sentiment

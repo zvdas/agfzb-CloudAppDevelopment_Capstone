@@ -13,7 +13,8 @@
         {% include 'djangoapp/navbar.html' %}
 
         <!-- Add reviews as cards -->
-        <h1 class="ml-5 mt-5">Reviews for {{name}}</h1>
+        <h1 class="ml-5 mt-5">Reviews for {{dealer_name}}</h1>
+        <a class="btn btn-primary ml-5 mt-5 text-white col-3" href="{% url 'djangoapp:add_review' dealer_id dealer_name %}">Add Review</a>
         <div class="card-group m-3 p-3">
             {% for review in reviews %}
             <div class="card m-5 p-2">

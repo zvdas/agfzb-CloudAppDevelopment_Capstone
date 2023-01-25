@@ -1,0 +1,11 @@
+{
+    "id": 53, 
+    "name": "Tempsoft Car Dealership", 
+    "dealership": 15, 
+    "review": "This is a bad dealership poor maintenance", 
+    "purchase": True, 
+    "purchase_date": "01/11/2023", 
+    "car_make": "Audi", 
+    "car_model": "John Doe", 
+    "car_year": "2010"
+}
