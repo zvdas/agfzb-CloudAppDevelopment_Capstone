@@ -17,7 +17,7 @@ function main(params) {
  */
  function getAllRecords(cloudant,dbname) {
      return new Promise((resolve, reject) => {
-         cloudant.postAllDocs({ db: dbname, includeDocs: true, limit: 10 })            
+         cloudant.postAllDocs({ db: dbname, includeDocs: true })            
              .then((result)=>{
               console.log(result.result.rows)
               resolve({ result: result.result.rows });
