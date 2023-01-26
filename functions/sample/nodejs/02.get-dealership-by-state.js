@@ -8,8 +8,11 @@ function main(params) {
       authenticator: authenticator
     });
     cloudant.setServiceUrl(params.COUCH_URL);
-
-    return getMatchingRecords(cloudant, "dealerships", params.SELECTOR);
+    const selector = {
+      state: params.STATE
+    };
+    console.log("selector: ", selector)
+    return getMatchingRecords(cloudant, "dealerships", selector);
 }
 
  /*
@@ -33,6 +36,6 @@ function getMatchingRecords(cloudant, dbname, selector) {
 {
     "IAM_API_KEY": "",
     "COUCH_URL": "",
-    "SELECTOR": {"state": "California"}
+    "STATE" : "California"
 }
 */
